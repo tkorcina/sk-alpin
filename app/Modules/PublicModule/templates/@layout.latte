@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="{$locale}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="index, follow">
+	<meta name="author" content="Tomáš Korcina aka Korca">
+
+
+	<link rel="preload" href="{$basePath}/dist/fonts/Urbanist-ExtraLight.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{$basePath}/dist/fonts/Urbanist-Light.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{$basePath}/dist/fonts/Urbanist-Regular.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{$basePath}/dist/fonts/Urbanist-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+	<link rel="stylesheet" href="{$basePath}/dist/css/app.css">
+
+	<script src="{$basePath}/dist/js/app.js?v={mt_rand(100,999)}"></script>
+</head>
+
+<body>
+	<main>
+
+		{snippet flashes}
+			<div n:foreach="$flashes as $flash" n:class="alert, show, my-0, rounded-0,
+					$flash->type === 'success' ? 'g-bg-teal g-color-white',
+					$flash->type === 'danger' ? 'g-bg-red g-color-white',
+					$flash->type === 'warning' ? 'g-bg-yellow',
+					$flash->type === 'info' ? 'g-bg-gray-dark-v2 g-color-white',
+				"
+				role="alert"
+			>
+				<div class="media d-flex align-items-center">
+					<div class="d-flex g-mr-10">
+						<i n:class="
+							$flash->type === 'success' ? 'icon-check',
+							$flash->type === 'danger' ? 'icon-ban',
+							$flash->type === 'warning' ? 'icon-info',
+							$flash->type === 'info' ? 'icon-question',
+							g-font-size-25
+						"></i>
+					</div>
+					<div class="media-body align-self-center">{_$flash->message|noescape}</div>
+				</div>
+			</div>
+		{/snippet}
+
+		{include content}
+
+		<footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center text-md-left g-mb-0--md">
+						<div class="d-flex justify-content-center">
+							<small class="d-block g-font-size-default g-mr-10">© {Nette\Utils\DateTime::from('now')|date:'Y'} sk-alpin.cz</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</main>
+
+	{block scripts}
+		{ifset componentJs}{include componentJs}{/ifset}
+	{/block}
+
+	{include 'include/js.latte'}
+
+	{block js}{/block}
+
+	<script type="text/javascript">
+		function addMetaTag(name,content){
+			var meta = document.createElement('meta');
+			meta.httpEquiv = name;
+			meta.content = content;
+		}
+
+		{if $validateCache}
+			addMetaTag("pragma","no-cache");
+			addMetaTag("expires","0");
+			addMetaTag("cache-control","no-cache");
+			Cookies.set('cacheDeleted', '1', { expires: 1 }); // budem mazat cache každý den
+			location.reload();
+		{/if}
+	</script>
+
+	<script src="{$basePath}/assets/js/nette.ajax.js"></script>
+</body>
+</html>

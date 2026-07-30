@@ -29,6 +29,7 @@ clean:
 	sudo rm -rf temp/proxies/*
 	sudo rm -rf log/*
 	composer dump-autoload
+	sudo chmod -R 777 temp/
 
 _composer:
 	composer install

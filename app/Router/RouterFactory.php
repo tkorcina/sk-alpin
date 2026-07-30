@@ -20,8 +20,13 @@ class RouterFactory
 
 		$adminModule = new RouteList('Admin');
 		$router[] = $adminModule;
-		$adminModule[] = new Route('[<locale cs|en>/]<presenter>/<action>[/<id>]', 'Homepage:default');
-		$adminModule[] = new Route('/', 'Homepage:default');
+		$adminModule[] = new Route('administrace/[<locale cs|en>/]<presenter>/<action>[/<id>]', 'Homepage:default');
+
+		$publicModule = new RouteList('Public');
+		$router[] = $publicModule;
+		$publicModule[] = new Route('[<locale cs|en>/]sitemap[.xml]', 'Homepage:sitemap');
+		$publicModule[] = new Route('[<locale cs|en>/]<presenter>/<action>[/<id>]', 'Homepage:default');
+		$publicModule[] = new Route('/', 'Homepage:default');
 
 		return $router;
 	}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Tomáš Korcina aka Korca">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <title>SK Alpin</title>
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    {block head}{/block}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <script src="{$basePath}/dist/js/app.js?v={mt_rand(999, 999999)}"></script>
+</head>
+
+<body class="bg-white">
+<main class="g-min-height-100vh g-flex-centered g-pa-15" style="flex-wrap: wrap;">
+    <div class="text-center g-flex-centered-item g-position-rel g-pb-15">
+        <div class="g-font-size-180 g-font-size-240--sm g-line-height-1 g-font-weight-600er g-color-gray-light-v4">{$exceptionCode}</div>
+        <div class="g-absolute-centered">
+            {include content}
+
+            <a href="https://sk-alpin.cz" class="text-uppercase g-color-black g-color-primary--hover g-text-no-underline--hover">
+                Back to homepage.
+            </a>
+        </div>
+    </div>
+    </div>
+</main>
+
+	{block scripts}
+    {ifset componentJs}{include componentJs}{/ifset}
+{/block}
+</body>
+</html>
