@@ -9,4 +9,5 @@ www/dist/js/*
 !www/assets/*
 
 app/config/config.local.neon
-www/dist/css.old
+www/dist/*.old*
+

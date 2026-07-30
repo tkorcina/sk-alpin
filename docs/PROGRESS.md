@@ -30,11 +30,17 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 
 - [x] Stylování veřejné části dle zadání (cílovka 40–65 let): přírodní paleta (lesní zelená `#2c5e3f`, jezerní modrá, zemitá hnědá, krémové pozadí), základní písmo 17 px / řádkování 1.65, hero s horami (SVG silueta), karty s datem/typem akce, aktivní položka v menu, sticky patička. SCSS v `www/src/scss` (hlavně `_page.scss`), build `./node_modules/.bin/gulp css` (funguje bez sudo, když `www/dist/css` vlastní korca).
 
+- [x] Administrace: editace stránek (grid bez mazání/přidávání — fixní home/about/contact, WYSIWYG, obrázek) a přehled zpráv z kontaktního formuláře (grid s mailto odkazy, mazání). Menu administrace doplněno.
+- [x] Kontaktní formulář: selhání SMTP nepoloží odeslání — zpráva se vždy uloží do DB, chyba se loguje do `log/mailer.log` (nesmí se logovat s prioritou exception, Tracy by ji zkoušela poslat tímtéž rozbitým SMTP).
+- [x] Lightbox ve fotogalerii — GLightbox (yarn balíček, zapojený do gulp js/css, init v `www/src/js/base.js`, třída `.glightbox` v šabloně detailu galerie).
+- [x] Responsivní hamburger menu pod 991 px — animovaná ikonka (3 čáry → křížek), bootstrap collapse, odkazy pod sebou.
+
 ## Rozpracováno / další kroky
 
-- [ ] Administrace: editace stránek (WYSIWYG) a přehled zpráv z formuláře — zbytek Fáze 4.
 - [ ] Skutečná hero fotka z hor místo CSS přechodu (až budou podklady).
-- [ ] Responsivní kontrola na reálném mobilu (Bootstrap grid stackuje pod 991 px, vizuálně neověřeno).
+- [ ] Responsivní kontrola na reálném mobilu (mechanika collapse ověřena přes JS, vizuálně neověřeno — resize okna přes automatizaci nefungoval).
+- [ ] Resize/náhledy obrázků při uploadu (Nette Image) — zbytek Fáze 3.
+- [ ] Fáze 5: SEO (sitemap už má routu, meta popisky), favicon, GDPR lišta, nasazení.
 - [ ] Resize obrázků + náhledy (Nette Image) a lightbox v galerii — Fáze 3.
 - [ ] Hero fotka, styly a „turistický“ vzhled (Fáze 2/5) — teď je jen minimální markup nad firemní šablonou.
 - [ ] Stránkování aktualit doladit (komponenta Paginator je zapojená, chybí ověření s více záznamy).
@@ -51,3 +57,4 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 - **2026-07-30** — Veřejná část: presentery, šablony, routy, kontaktní formulář. Ověřeno na http://sk-alpin.loc/ (všechny stránky 200, 404 funguje, formulář se vykresluje, `/administrace` přesměruje na login). Pozn.: kvůli neznámým třídám v RobotLoader cache přejmenován `temp/cache` → `temp/cache.old` (nešlo smazat bez sudo) — **smazat ručně: `sudo rm -rf temp/cache.old temp/cache.old2`**.
 - **2026-07-30** — Administrace: CRUD akce/aktuality/galerie, vytvořen lokální admin uživatel, vše otestováno end-to-end přes HTTP (login, uložení, upload, mazání). Testovací data po ověření smazána.
 - **2026-07-30** — Stylování veřejné části, ověřeno v Chrome (úvod, akce, galerie, kontakt). V DB nechána ukázková data (5 akcí, 3 aktuality, 2 galerie s placeholder obrázky `www/data/upload/sample_*.png`) — před produkcí smazat. Úklid pro sudo: `sudo rm -rf temp/cache.old temp/cache.old2 temp/cache.old3 www/dist/css.old`.
+- **2026-07-30** — Dokončena Fáze 4 (stránky + zprávy), GLightbox, hamburger menu. Vše otestováno (uložení stránky se propíše na web, zpráva z formuláře se uloží i při nefunkčním SMTP, lightbox se otevírá, collapse menu funguje). V přehledu zpráv nechány 1–2 testovací zprávy. Úklid pro sudo navíc: `sudo rm -rf temp/cache.old4 temp/cache.old5 www/dist/css.old-root www/dist/js.old`.
