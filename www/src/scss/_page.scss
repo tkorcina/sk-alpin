@@ -1,0 +1,276 @@
+// ---------------------------------------------------------------------------
+// Veřejná část SK-Alpin — klasický, čistý, mírně retro „turistický“ vzhled.
+// Důraz na čitelnost (cílová skupina 40–65 let): velké písmo, vysoký kontrast.
+// ---------------------------------------------------------------------------
+
+// Sticky patička — krátké stránky nenechávají bílý pruh pod patičkou
+// (.site-footer je uvnitř <main>, proto flex na <main>)
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+	display: flex;
+	flex-direction: column;
+
+	> .site-footer {
+		margin-top: auto;
+	}
+}
+
+// Hlavička s navigací
+.site-header {
+	background: #fff;
+	border-bottom: 4px solid $forest;
+
+	.site-brand {
+		display: inline-flex;
+		align-items: center;
+		gap: .5rem;
+		font-size: 1.5rem;
+		font-weight: 800;
+		color: $forest-dark;
+		text-decoration: none;
+
+		svg {
+			flex: 0 0 auto;
+		}
+	}
+
+	.site-brand-sub {
+		display: block;
+		font-size: .8rem;
+		font-weight: 600;
+		letter-spacing: .08em;
+		text-transform: uppercase;
+		color: $earth;
+	}
+}
+
+.site-nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .25rem;
+
+	a {
+		display: inline-block;
+		padding: .5rem .9rem;
+		font-size: 1.05rem;
+		font-weight: 600;
+		color: $ink;
+		text-decoration: none;
+		border-bottom: 3px solid transparent;
+
+		&:hover {
+			color: $forest;
+			border-bottom-color: $forest-light;
+		}
+
+		&.active {
+			color: $forest-dark;
+			border-bottom-color: $forest;
+		}
+	}
+}
+
+// Hero na úvodní stránce
+.hero {
+	position: relative;
+	background: linear-gradient(160deg, $forest-dark 0%, $forest 55%, $lake 100%);
+	color: #fff;
+	padding: 4.5rem 0 6rem;
+	overflow: hidden;
+
+	h1 {
+		color: #fff;
+		font-size: 2.6rem;
+		margin-bottom: .75rem;
+	}
+
+	.hero-motto {
+		font-size: 1.35rem;
+		max-width: 40rem;
+		color: rgba(#fff, .92);
+	}
+
+	.hero-mountains {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -1px;
+		width: 100%;
+		height: 70px;
+		display: block;
+	}
+
+	.btn {
+		font-size: 1.05rem;
+		padding: .6rem 1.4rem;
+	}
+}
+
+// Sekce
+.section {
+	padding: 3.25rem 0;
+
+	> .container > h2:first-child {
+		margin-bottom: 1.5rem;
+		padding-bottom: .5rem;
+		border-bottom: 3px solid $forest-light;
+	}
+}
+
+.section-alt {
+	background: $cream;
+}
+
+.section-more {
+	margin-top: 1rem;
+	font-weight: 600;
+}
+
+// Karty akcí / aktualit / galerií
+.card-item {
+	height: 100%;
+	background: #fff;
+	border: 1px solid darken($forest-light, 8%);
+	border-radius: .5rem;
+	padding: 1.25rem 1.25rem 1rem;
+
+	h3 {
+		font-size: 1.3rem;
+		margin: .5rem 0;
+
+		a {
+			color: $forest-dark;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.date-badge {
+	display: inline-block;
+	background: $forest-light;
+	color: $forest-dark;
+	font-weight: 700;
+	border-radius: .375rem;
+	padding: .15rem .6rem;
+}
+
+.type-badge {
+	display: inline-block;
+	background: $cream;
+	color: $earth;
+	font-weight: 600;
+	border-radius: .375rem;
+	padding: .15rem .6rem;
+}
+
+.item-meta {
+	color: mix($ink, #fff, 75%);
+	margin-bottom: .25rem;
+}
+
+// Výpisy akcí a aktualit (řádkové)
+.item-list {
+	.item-row {
+		padding: 1.1rem 0;
+		border-bottom: 1px solid darken($forest-light, 5%);
+
+		h3 {
+			font-size: 1.35rem;
+			margin-bottom: .25rem;
+
+			a {
+				color: $forest-dark;
+				text-decoration: none;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+// Detaily
+.detail-meta {
+	background: $cream;
+	border-left: 5px solid $forest;
+	border-radius: 0 .5rem .5rem 0;
+	padding: 1rem 1.25rem;
+	margin: 1.25rem 0;
+}
+
+// Fotogalerie
+.gallery-card {
+	display: block;
+	text-decoration: none;
+
+	.gallery-thumb {
+		display: block;
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+		border-radius: .5rem;
+		border: 1px solid darken($forest-light, 8%);
+	}
+
+	h3 {
+		font-size: 1.25rem;
+		margin: .6rem 0 .15rem;
+	}
+}
+
+.photo-grid {
+	a {
+		display: block;
+	}
+
+	img {
+		width: 100%;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+		border-radius: .375rem;
+		border: 1px solid darken($forest-light, 8%);
+	}
+}
+
+// Patička
+.site-footer {
+	background: $forest-dark;
+	color: rgba(#fff, .85);
+	padding: 2rem 0;
+	margin-top: 3rem;
+	flex-shrink: 0;
+
+	a {
+		color: #fff;
+	}
+}
+
+// Kontaktní formulář a obsahové stránky
+.content-form {
+	max-width: 44rem;
+
+	.form-control {
+		font-size: 1.05rem;
+		padding: .55rem .75rem;
+	}
+
+	.btn {
+		font-size: 1.05rem;
+		padding: .6rem 1.5rem;
+	}
+}
+
+.page-content {
+	max-width: 50rem;
+	font-size: 1.0625rem;
+}

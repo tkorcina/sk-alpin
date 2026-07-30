@@ -5,7 +5,7 @@ h2 {
 	font-weight: bold;
 }
 h3 {
-	font-size: 36px;
+	font-size: 28px;
 }
 h4 {
 	font-size: 24px;
@@ -19,8 +19,8 @@ h6 {
 	font-weight: bold;
 }
 p {
-	font-weight: 300;
-	font-size: 18px;
+	font-weight: 400;
+	font-size: 1em;
 }
 
 strong {
@@ -28,9 +28,9 @@ strong {
 }
 
 a {
-	color: black;
+	color: $link-color;
 }
 
 a:hover {
-	color: darkslategray;
+	color: $link-hover-color;
 }

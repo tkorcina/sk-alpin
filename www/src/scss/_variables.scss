@@ -1,9 +1,29 @@
 $fa-font-path: '../fonts';
 
+// SK-Alpin — přírodní paleta (les / voda / země), cílová skupina 40–65 let
+$forest: #2c5e3f;
+$forest-dark: #1e4530;
+$forest-light: #deefe6;
+$lake: #2b6777;
+$earth: #8a6d4b;
+$cream: #f6f2e7;
+$ink: #26302b;
+
 $dark-gray: #2f2d34;
 $gray: #244f3b;
 $light-gray: #deefe6;
 $ultra-light-gray: #f8f8f8;
+
+// Bootstrap overrides — čitelnost: větší písmo, vyšší kontrast
+$primary: $forest;
+$secondary: $lake;
+$body-color: $ink;
+$link-color: #1d5a38;
+$link-hover-color: $forest-dark;
+$font-size-base: 1.0625rem; // 17px
+$line-height-base: 1.65;
+$headings-font-weight: 700;
+$headings-color: $forest-dark;
 
 $input-btn-focus-width: 2px;
 
