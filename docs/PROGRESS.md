@@ -26,16 +26,23 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 - [x] Kostra veřejné části: presentery + šablony (Homepage, Akce, Aktuality, Fotogalerie, O nás, Kontakt), navigace v layoutu, hezké routy (`/akce`, `/aktuality`, `/fotogalerie`, `/o-nas`, `/kontakt`).
 - [x] Kontaktní formulář — uložení `ContactMessage` + odeslání e-mailu (parametry `contactEmail` / `noReplyEmail` v configu, honeypot antispam).
 
+- [x] Administrace: CRUD pro akce, aktuality a fotogalerie — gridy (ublaboo přes `BaseGrid`), formuláře (CKEditor na popisech, upload obrázku u aktuality, hromadný upload fotek u galerie + mazání jednotlivých fotek), menu v layoutu. Otestováno přes přihlášení: vytvoření/editace/smazání akce, aktualita s obrázkem, galerie se 2 fotkami, smazání fotky.
+
 ## Rozpracováno / další kroky
 
-- [ ] Administrace: CRUD agendy (akce, aktuality, galerie s hromadným uploadem, stránky WYSIWYG, přehled zpráv) — Fáze 4.
+- [ ] Administrace: editace stránek (WYSIWYG) a přehled zpráv z formuláře — zbytek Fáze 4.
 - [ ] Resize obrázků + náhledy (Nette Image) a lightbox v galerii — Fáze 3.
 - [ ] Hero fotka, styly a „turistický“ vzhled (Fáze 2/5) — teď je jen minimální markup nad firemní šablonou.
 - [ ] Stránkování aktualit doladit (komponenta Paginator je zapojená, chybí ověření s více záznamy).
+
+## Přístupy (lokální)
+
+- Admin: `tomask@appsdevteam.com` / `admin123` (uživatel vložen ručně do lokální DB, v produkci nahradit).
 
 ## Log
 
 - **2026-07-30** — Založen progress log, uloženo zadání. Prozkoumána firemní šablona a referenční projekt `ondrejzamecnik.loc`, odsouhlasen rozsah kostry: entity + model + migrace + kostra veřejné části.
 - **2026-07-30** — Modelová vrstva: entity, enumy, trait TPublished, query objekty s factory, FileService.
 - **2026-07-30** — Migrace vygenerovány a spuštěny na lokální DB (pozn.: `temp/cache` vlastní www-data, CLI příkazy je potřeba pouštět přes `sudo make m-diff` / `m-migrate`, nebo s vlastním temp adresářem).
-- **2026-07-30** — Veřejná část: presentery, šablony, routy, kontaktní formulář. Ověřeno na http://sk-alpin.loc/ (všechny stránky 200, 404 funguje, formulář se vykresluje, `/administrace` přesměruje na login). Pozn.: kvůli neznámým třídám v RobotLoader cache přejmenován `temp/cache` → `temp/cache.old` (nešlo smazat bez sudo) — **smazat ručně: `sudo rm -rf temp/cache.old`**.
+- **2026-07-30** — Veřejná část: presentery, šablony, routy, kontaktní formulář. Ověřeno na http://sk-alpin.loc/ (všechny stránky 200, 404 funguje, formulář se vykresluje, `/administrace` přesměruje na login). Pozn.: kvůli neznámým třídám v RobotLoader cache přejmenován `temp/cache` → `temp/cache.old` (nešlo smazat bez sudo) — **smazat ručně: `sudo rm -rf temp/cache.old temp/cache.old2`**.
+- **2026-07-30** — Administrace: CRUD akce/aktuality/galerie, vytvořen lokální admin uživatel, vše otestováno end-to-end přes HTTP (login, uložení, upload, mazání). Testovací data po ověření smazána.

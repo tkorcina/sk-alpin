@@ -35,7 +35,19 @@
 
 	<main>
 		{if $user->isLoggedIn()}
-
+			<nav class="navbar navbar-expand navbar-dark bg-dark">
+				<div class="container">
+					<a class="navbar-brand" n:href="Homepage:default">SK-Alpin — administrace</a>
+					<div class="navbar-nav me-auto">
+						<a class="nav-link" n:href="Event:default">Akce</a>
+						<a class="nav-link" n:href="News:default">Aktuality</a>
+						<a class="nav-link" n:href="Gallery:default">Fotogalerie</a>
+					</div>
+					<div class="navbar-nav">
+						<a class="nav-link" n:href="Sign:out">Odhlásit</a>
+					</div>
+				</div>
+			</nav>
 		{/if}
 
 		<section class="container g-py-25">
