@@ -19,19 +19,28 @@
 
 <body>
 	<header class="site-header">
-		<div class="container d-md-flex justify-content-between align-items-center py-3">
-			<a n:href="Homepage:default" class="site-brand">
-				<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M2 28 L12 8 L18 19 L22 12 L32 28 Z" fill="#2c5e3f"/><path d="M12 8 L15 14 L12 13 L9 14 Z" fill="#deefe6"/></svg>
-				<span>SK-Alpin<span class="site-brand-sub">sport a pohyb v přírodě</span></span>
-			</a>
-			<nav class="site-nav mt-2 mt-md-0">
-				<a n:href="Homepage:default" n:class="$presenter->isLinkCurrent('Homepage:*') ? active">Úvod</a>
-				<a n:href="Page:default internalName => about" n:class="$presenter->isLinkCurrent('Page:*') ? active">O nás</a>
-				<a n:href="Event:default" n:class="$presenter->isLinkCurrent('Event:*') ? active">Akce</a>
-				<a n:href="Gallery:default" n:class="$presenter->isLinkCurrent('Gallery:*') ? active">Fotogalerie</a>
-				<a n:href="News:default" n:class="$presenter->isLinkCurrent('News:*') ? active">Aktuality</a>
-				<a n:href="Contact:default" n:class="$presenter->isLinkCurrent('Contact:*') ? active">Kontakt</a>
-			</nav>
+		<div class="container py-3">
+			<div class="d-md-flex justify-content-between align-items-center">
+				<div class="d-flex justify-content-between align-items-center">
+					<a n:href="Homepage:default" class="site-brand">
+						<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M2 28 L12 8 L18 19 L22 12 L32 28 Z" fill="#2c5e3f"/><path d="M12 8 L15 14 L12 13 L9 14 Z" fill="#deefe6"/></svg>
+						<span>SK-Alpin<span class="site-brand-sub">sport a pohyb v přírodě</span></span>
+					</a>
+					<button class="nav-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Otevřít menu">
+						<span class="nav-toggle-bar"></span>
+						<span class="nav-toggle-bar"></span>
+						<span class="nav-toggle-bar"></span>
+					</button>
+				</div>
+				<nav class="site-nav collapse d-md-flex" id="siteNav">
+					<a n:href="Homepage:default" n:class="$presenter->isLinkCurrent('Homepage:*') ? active">Úvod</a>
+					<a n:href="Page:default internalName => about" n:class="$presenter->isLinkCurrent('Page:*') ? active">O nás</a>
+					<a n:href="Event:default" n:class="$presenter->isLinkCurrent('Event:*') ? active">Akce</a>
+					<a n:href="Gallery:default" n:class="$presenter->isLinkCurrent('Gallery:*') ? active">Fotogalerie</a>
+					<a n:href="News:default" n:class="$presenter->isLinkCurrent('News:*') ? active">Aktuality</a>
+					<a n:href="Contact:default" n:class="$presenter->isLinkCurrent('Contact:*') ? active">Kontakt</a>
+				</nav>
+			</div>
 		</div>
 	</header>
 

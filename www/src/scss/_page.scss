@@ -49,8 +49,8 @@ main {
 	}
 }
 
+// zobrazeni na desktopu ridi trida d-md-flex, na mobilu bootstrap collapse
 .site-nav {
-	display: flex;
 	flex-wrap: wrap;
 	gap: .25rem;
 
@@ -71,6 +71,60 @@ main {
 		&.active {
 			color: $forest-dark;
 			border-bottom-color: $forest;
+		}
+	}
+}
+
+.nav-toggle {
+	background: transparent;
+	border: 0;
+	padding: .55rem .35rem;
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	cursor: pointer;
+
+	.nav-toggle-bar {
+		display: block;
+		width: 26px;
+		height: 3px;
+		border-radius: 2px;
+		background: $forest-dark;
+		transition: transform .25s ease, opacity .2s ease;
+	}
+
+	// rozkliknuto -> ikonka se promeni v krizek
+	&[aria-expanded="true"] {
+		.nav-toggle-bar:nth-child(1) {
+			transform: translateY(8px) rotate(45deg);
+		}
+		.nav-toggle-bar:nth-child(2) {
+			opacity: 0;
+		}
+		.nav-toggle-bar:nth-child(3) {
+			transform: translateY(-8px) rotate(-45deg);
+		}
+	}
+}
+
+@media (max-width: 990.98px) {
+	.site-nav {
+		padding: .75rem 0 .5rem;
+
+		a {
+			display: block;
+			padding: .7rem .25rem;
+			font-size: 1.1rem;
+			border-bottom: 1px solid $forest-light;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+
+			&.active {
+				border-bottom-color: $forest;
+			}
 		}
 	}
 }
