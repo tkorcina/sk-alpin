@@ -1,0 +1,18 @@
+{form form}
+	{formPair title}
+	{formPair date}
+	{formPair event}
+	<div>
+		{formPair photos}
+		<div class="d-flex justify-content-start flex-wrap mt-2" n:if="$gallery && !$gallery->isNew() && ($photos = $gallery->getPhotos())">
+			<div class="me-4 mb-4 text-center" n:foreach="$photos as $photo">
+				<p class="my-0"><img height="150" src="{$basePath}{$photo->getFile()->getPath()}" alt="{$photo->getDescription() ?? $gallery->getTitle()}"></p>
+				<a href="{plink deletePhoto!, gallery => $gallery->getId(), photoId => $photo->getId()}" class="btn btn-outline-danger mt-2 border-radius-none" title="Smazat fotografii" onclick="return confirm('Opravdu smazat fotografii?');">
+					Smazat
+				</a>
+			</div>
+		</div>
+	</div>
+	{formPair published}
+	{formPair submit}
+{/form}
