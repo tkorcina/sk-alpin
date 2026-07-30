@@ -1,0 +1,16 @@
+{form form}
+	{formPair title}
+	{formPair content}
+	<div>
+		{formPair image}
+		<div class="d-flex justify-content-center flex-wrap mt-2 text-center" n:if="$item && $item->getImage()">
+			<p class="my-0"><img height="200" src="{$basePath}{$item->getImage()->getPath()}" alt="{$item->getTitle()}"></p>
+			<div class="w-100">
+				<a href="{plink deleteImage!, page => $item->getId()}" class="btn btn-outline-danger mt-2 border-radius-none" title="Smazat obrázek" onclick="return confirm('Opravdu smazat obrázek?');">
+					Smazat obrázek
+				</a>
+			</div>
+		</div>
+	</div>
+	{formPair submit}
+{/form}
