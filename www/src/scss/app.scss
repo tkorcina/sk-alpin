@@ -1,0 +1,29 @@
+@import '_variables';
+
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+@import '../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
+@import '../../../node_modules/@fortawesome/fontawesome-free/scss/solid';
+@import '../../../node_modules/@fortawesome/fontawesome-free/scss/brands';
+@import '../../../node_modules/jquery-ui/themes/base/all.css';
+@import '../../../node_modules/jquery-ui-timepicker-addon/dist/jquery-ui-timepicker-addon.css';
+@import '../../../vendor/ublaboo/datagrid/assets/datagrid.css';
+@import '../../../vendor/ublaboo/datagrid/assets/datagrid-spinners.css';
+
+@import "_font-urbanist";
+@import '_base';
+@import '_texts';
+@import '_page';
+@import '_forms';
+
+.col-per-page.text-right {
+	display: none;
+}
+
+.border-radius-none {
+	border-radius: 0 !important;
+}
+
+.form-control {
+	border: 2px solid black !important;
+	border-radius: 0 !important;
+}

@@ -1,0 +1,26 @@
+edit: Upravit
+no_item_found_reset: "Nenalezeny žádné položky. Můžete obnovit filtr."
+here: zde
+no_item_found: "Nenalezeny žádné položky."
+group_actions: "Hromadné akce"
+all: vše
+reset_filter: "Obnovit filtr"
+items: Položky
+from: z
+show: Zobrazit
+show_all_columns: "Zobrazit všechny sloupce"
+show_default_columns: "Zobrazit původní sloupce"
+hide_column: "Skrýt sloupec"
+action: Akce
+previous: Předchozí
+next: Další
+choose: Vyberte
+choose_input_required: "Hromadná akce nepovoluje prázdné hodnoty."
+execute: Provést
+save: Uložit
+cancel: Zrušit
+multiselect_choose: Vybrat
+filter_submit_button: Filtrovat
+multiselect_selected: "{0} vybráno"
+per_page_submit: Změnit
+items_onPage: Položek na stránku

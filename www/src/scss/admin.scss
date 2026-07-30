@@ -1,0 +1,64 @@
+body, html {
+	min-width: 400px;
+	overflow-x: auto !important;
+}
+
+.ck.ck-editor, .btn-warning, .form-select {
+	border: 2px solid black !important;
+	border-radius: 0 !important;
+}
+
+.btn {
+	border-width: 2px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.control-label {
+	font-weight: bold;
+}
+
+.datagrid table thead tr th {
+	background: black;
+	color: white;
+}
+
+.datagrid table td.col-action {
+	border-left: 2px solid;
+}
+
+.datagrid table td.col-action a {
+	color: black !important;
+}
+
+.datagrid {
+	padding: 0 !important;
+}
+
+.datagrid-grid p {
+	font-size: unset;
+	font-weight: normal;
+	margin: 0;
+}
+
+.datagrid table tbody td:not(.col-action) {
+	min-width: 180px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+	display: none !important;
+}
+
+.select2-container .select2-selection--single {
+	border: none !important;
+}
+
+.select2-container {
+	border: 2px solid black;
+	border-radius: 0 !important;
+	height: 36px;
+}
+
+.select2-container--default .select2-selection--multiple {
+	border: 2px solid transparent !important;
+}

@@ -1,0 +1,11 @@
+!.gitignore
+.idea/
+node_modules/
+vendor/
+
+www/dist/fonts/*
+www/dist/css/*
+www/dist/js/*
+!www/assets/*
+
+app/config/config.local.neon

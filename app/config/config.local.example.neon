@@ -1,0 +1,29 @@
+parameters:
+	database:
+		serverVersion: '8.0'
+		driver: pdo_mysql
+		host: 127.0.0.1
+		port: 3306
+		user: root
+		password: gagaga159
+		dbname: sk-alpin_local
+
+	mailer:
+		smtp: true
+		host: smtp.sparkpostmail.com
+		port: 587
+		username: SMTP_Injection
+		password: **************************
+		secure: tls
+		singleRecipient: 'tomaskorcina@seznam.cz'
+
+doctrine:
+#	logging: %appDir%/../log/sql.log	# Logování všech Doctrine SQL queries
+
+tracy:
+	editor: "phpstorm://open?file=%file&line=%line"
+
+session:
+	cookiePath: '/'
+	cookieDomain: 'sk-alpin.loc'
+	debugger: true

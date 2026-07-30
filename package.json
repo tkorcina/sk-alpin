@@ -1,0 +1,44 @@
+{
+  "name": "sk-alpin-app",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tkorcina/sk-alpin.git"
+  },
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.2.0",
+    "adt-nette-ajax": "^1.0.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "bootstrap": "^5.2.0",
+    "del": "^3.0.0",
+    "gulp": "^4.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-composer": "^0.4.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-debug": "^4.0.0",
+    "gulp-expect-file": "^1.0.0",
+    "gulp-filter": "^5.0.1",
+    "gulp-help-doc": "^1.1.1",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.2",
+    "jquery": "^3.3.1",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-timepicker-addon": "^1.6.3",
+    "js-cookie": "^3.0.1",
+    "nette-forms": "^2.4.2",
+    "nette.ajax.js": "^2.3.0",
+    "node-sass": "^7.0.1"
+  },
+  "scripts": {
+    "preinstall": "node -e 'if(!/yarn\\.js$/.test(process.env.npm_execpath)) throw new Error(\"Use Yarn instead of NPM\")'"
+  },
+  "devDependencies": {
+    "gulp": "^4.0"
+  }
+}

@@ -1,0 +1,48 @@
+<script type="importmap">
+	{
+		"imports": {
+			"ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.js",
+			"ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.0.0/"
+		}
+	}
+</script>
+
+<script type="module">
+	import {
+		ClassicEditor,
+		Essentials,
+		Paragraph,
+		Bold,
+		Italic,
+		SourceEditing,
+		Link
+	} from 'ckeditor5';
+
+	ClassicEditor
+		.create(document.querySelector('.editor'), {
+			plugins: [ Essentials, Paragraph, Bold, Italic, SourceEditing, Link],
+			toolbar: {
+				items: [
+					'undo', 'redo', '|', 'bold', 'italic', '|', 'link', 'sourceEditing',
+				]
+			}
+		}).then(editor => {
+			editor.model.document.on('change:data', (evt, data) => {
+				$('.editor').val(editor.getData())
+			});
+		});
+
+	ClassicEditor
+		.create(document.querySelector('.editor2'), {
+			plugins: [ Essentials, Paragraph, Bold, Italic, SourceEditing, Link ],
+			toolbar: {
+				items: [
+					'undo', 'redo', '|', 'bold', 'italic', '|', 'link', 'sourceEditing',
+				]
+			}
+		}).then(editor => {
+			editor.model.document.on('change:data', (evt, data) => {
+				$('.editor2').val(editor.getData())
+			})
+		});
+</script>

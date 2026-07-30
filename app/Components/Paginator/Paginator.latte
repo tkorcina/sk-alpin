@@ -1,0 +1,53 @@
+<div class="row" n:if="$paginator->getItemCount() > $paginator->getItemsPerPage()">
+	<div class="col-lg-12 g-my-75 px-0 mx-0">
+		<div class="text-center">
+			<nav class="text-center" aria-label="Page Navigation">
+				<ul class="list-inline g-mb-0">
+
+					<li class="list-inline-item g-hidden-sm-down" n:if="!$paginator->isFirst()">
+						<a class="u-pagination-v1__item u-pagination-v1-3 g-brd-2 g-pa-4-11" href="{plink this, page => $paginator->getPage() - 1}" aria-label="Prev">
+							<span aria-hidden="true"><i class="fa fa-angle-left"></i></span><span class="sr-only">Prev</span>
+						</a>
+					</li>
+
+					<li class="list-inline-item">
+						<a class="u-pagination-v1__item u-pagination-v1-3 g-brd-2 g-pa-4-11{if $paginator->isFirst()} u-pagination-v1-3--active{/if}" href="{plink this, page => 1}">1</a>
+					</li>
+
+					{if $paginator->getPageCount() > 3 && !$paginator->isFirst() && $paginator->getPage() - 2 > 1}
+						<li class="list-inline-item">
+							<span>...</span>
+						</li>
+					{/if}
+
+					{for $i = 2; $i < $paginator->getPageCount(); $i++}
+						{if $i > ($paginator->getPage() - 3) && $i < ($paginator->getPage() + 3)}
+							<li class="list-inline-item">
+								<a href="{plink this, page => $i}" class="u-pagination-v1__item u-pagination-v1-3 g-brd-2 g-pa-4-11 {if $i == $paginator->getPage()}u-pagination-v1-3--active{/if}">{$i}</a>
+							</li>
+						{/if}
+					{/for}
+
+					{if $paginator->getPageCount() > 3 && !$paginator->isLast() && $paginator->getPage() + 2 < $paginator->getPageCount()}
+						<li class="list-inline-item">
+							<span>...</span>
+						</li>
+					{/if}
+
+					<li class="list-inline-item">
+						<a href="{plink this, page => $paginator->getPageCount()}" class="u-pagination-v1__item u-pagination-v1-3 {if $paginator->isLast()}u-pagination-v1-3--active {/if}g-brd-2 g-pa-4-11">
+							{$paginator->getPageCount()}
+						</a>
+					</li>
+
+					<li class="list-inline-item g-hidden-sm-down" n:if="!$paginator->isLast()">
+						<a class="u-pagination-v1__item u-pagination-v1-3 g-brd-2 g-pa-4-11" href="{plink this, page => $paginator->getPage() + 1}" aria-label="Next">
+							<span aria-hidden="true"><i class="fa fa-angle-right"></i></span><span class="sr-only">Next</span>
+						</a>
+					</li>
+
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>

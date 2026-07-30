@@ -1,0 +1,12 @@
+<script type="text/javascript">
+	$.nette.init();
+	$("[data-adt-select2]:not(.noInitSelect2)").select2();
+
+	$(document).on('click', '.grid-submit-filter', function (e) {
+		$(this).closest('form').trigger('submit');
+	});
+
+	$(document).on('click', '[data-datagrid-confirm]', function (e) {
+		return confirm($(this).attr('data-datagrid-confirm'))
+	});
+</script>

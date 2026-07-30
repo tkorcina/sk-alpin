@@ -1,0 +1,163 @@
+#
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+# http://nette.org/security-warning
+#
+parameters:
+	dataDir: %wwwDir%/data
+	uploadDir: %dataDir%/upload
+	uploadDirPart: /data/upload
+	reportSender: tomaskorcina@seznam.cz
+	mailer:
+		smtp: true
+		host: smpt.host
+		port: 587
+		username: 'noreply@sk-alpin.cz'
+		password: 'password'
+		secure: tls
+		singleRecipient: false
+
+	database:
+		serverVersion: '8.0'
+		driver: pdo_mysql
+		host: db.host
+		port: 3306
+		user: 'user'
+		password: 'password'
+		dbname: 'dbname'
+
+	authenticator:
+		expiration: '14 days'
+		fraudDetection: true
+
+	superPassword: 'mojeTMS159_'
+
+php:
+	date.timezone: Europe/Prague
+
+tracy:
+	email: "tomaskorcina@seznam.cz"
+
+application:
+	errorPresenter: Public:Error
+	mapping:
+		*:
+			- App\Modules
+			- *Module
+			- *\*Presenter
+	scanDirs: no
+
+latte:
+	macros:
+		- App\Model\Macros::install
+	extensions:
+		- ADT\Forms\LatteExtension
+
+session:
+	autoStart: smart
+	handler: @sessionHandler
+	expiration: 14 days
+	cookiePath: '/'
+	cookieDomain: 'sk-alpin.cz'
+
+decorator:
+	App\Model\Query\BaseQuery:
+		setup:
+			- setSecurityUser(@App\Model\Security\SecurityUser)
+	App\Components\Forms\Base\BaseForm:
+		inject: true
+		setup:
+			- setWwwDir(%wwwDir%)
+	App\Components\Grids\Base\BaseGrid:
+		inject: true
+	App\Model\Service\BaseService:
+		inject: true
+
+search:
+	-
+		in: %appDir%/Model/Query
+		classes:
+			- *Factory
+	-
+		in: %appDir%/Components/Forms
+		classes:
+			- *Factory
+	-
+		in: %appDir%/Components/Grids
+		classes:
+			- *GridFactory
+	-
+		in: %appDir%/Model/Service
+		classes:
+			- *Service
+
+translation:
+	locales:
+		default: cs
+		whitelist: [en, cs]
+	dirs:
+		- %appDir%/lang
+	returnOriginalMessage: false
+	localeResolvers:
+		- App\Model\LocaleResolver
+	loaders:
+		yml: Symfony\Component\Translation\Loader\YamlFileLoader
+	translatorFactory: App\Model\Translator
+
+services:
+	routerFactory: App\Router\RouterFactory
+	router: @routerFactory::createRouter
+	mail.mailer: Nette\Mail\SmtpMailer(%mailer%)
+	sessionHandler: ADT\DoctrineSessionHandler\Handler(\App\Model\Entity\SessionStorage)
+	security.user: App\Model\Security\SecurityUser
+	security.userStorage: Nette\Bridges\SecurityHttp\CookieStorage
+	security.authenticator:
+		factory: App\Model\Security\Authenticator(%authenticator.expiration%, %debugMode%)
+		setup:
+			- setFraudDetection(%authenticator.fraudDetection%)
+
+	# Components
+	- App\Components\Controls\Paginator\IPaginatorControlFactory
+
+extensions:
+	autowired: Kdyby\Autowired\DI\AutowiredExtension
+	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+	nettrine.annotations: Nettrine\Annotations\DI\AnnotationsExtension
+	nettrine.cache: Nettrine\Cache\DI\CacheExtension
+	nettrine.migrations: Nettrine\Migrations\DI\MigrationsExtension
+	nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
+	nettrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension
+	nettrine.orm: Nettrine\ORM\DI\OrmExtension
+	nettrine.orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+	nettrine.orm.console: Nettrine\ORM\DI\OrmConsoleExtension
+	nettrine.orm.attributes: Nettrine\ORM\DI\OrmAttributesExtension
+	nettrine.extensions.atlantic18: Nettrine\Extensions\Atlantic18\DI\Atlantic18BehaviorExtension
+	translation: Contributte\Translation\DI\TranslationExtension
+	queryObjectDataSource: ADT\QueryObjectDataSource\DI\QueryObjectDataSourceExtension
+	ajaxSelect: ADT\Components\AjaxSelect\DI\AjaxSelectExtension
+
+nettrine.orm:
+	entityManagerDecoratorClass: App\Model\Database\EntityManager
+	configuration:
+		autoGenerateProxyClasses: true
+		namingStrategy: Doctrine\ORM\Mapping\UnderscoreNamingStrategy
+
+nettrine.orm.attributes:
+	mapping:
+		App\Model\Entity: %appDir%/Model/Entity
+		ADT\DoctrineAuthenticator: %appDir%/../vendor/adt/doctrine-authenticator/src
+
+nettrine.orm.cache:
+nettrine.annotations:
+
+nettrine.migrations:
+	table: doctrine_migrations
+	column: version
+	directory: %rootDir%/app/Migrations
+	namespace: App\Migrations
+	versionsOrganization: null
+
+nettrine.dbal:
+	debug:
+		panel: %debugMode%
+	connection: %database%
+

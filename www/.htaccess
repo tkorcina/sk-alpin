@@ -1,0 +1,63 @@
+# Apache configuration file (see https://httpd.apache.org/docs/current/mod/quickreference.html)
+Allow from all
+
+# disable directory listing
+<IfModule mod_autoindex.c>
+	Options -Indexes
+</IfModule>
+
+# disable caching
+#<IfModule mod_headers.c>
+#    Header set Cache-Control "no-cache, no-store, must-revalidate"
+#    Header set Pragma "no-cache"
+#    Header set Expires 0
+#</IfModule>
+
+# expires caching
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresByType image/jpg "access plus 1 day"
+	ExpiresByType image/jpeg "access plus 1 day"
+	ExpiresByType image/gif "access plus 1 day"
+	ExpiresByType image/png "access plus 1 day"
+	ExpiresByType text/css "access plus 1 day"
+	ExpiresByType application/pdf "access plus 1 day"
+	ExpiresByType text/x-javascript "access plus 1 day"
+	ExpiresByType application/x-shockwave-flash "access plus 1 day"
+	ExpiresByType image/x-icon "access plus 1 day"
+	ExpiresDefault "access plus 1 day"
+</IfModule>
+
+<FilesMatch "\.(eot|ttf|otf|woff|woff2)$">
+	Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
+# enable cool URL
+<IfModule mod_rewrite.c>
+	# RewriteBase /
+	RewriteEngine On
+	RewriteCond %{HTTPS} off
+	RewriteCond %{HTTP_HOST} !^www\.(.*)$ [NC]
+	RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+	RewriteCond %{HTTPS} on
+	RewriteCond %{HTTP_HOST} !^www\.(.*)$ [NC]
+	RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+	Header always set Content-Security-Policy "upgrade-insecure-requests"
+
+	# prevents files starting with dot to be viewed by browser
+	RewriteRule /\.|^\.(?!well-known/) - [F]
+
+	# front controller
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule !\.(pdf|js|ico|gif|jpg|png|css|rar|zip|tar\.gz|map)$ index.php [L]
+</IfModule>
+
+# enable gzip compression
+<IfModule mod_deflate.c>
+	<IfModule mod_filter.c>
+		AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json application/xml image/svg+xml
+	</IfModule>
+</IfModule>

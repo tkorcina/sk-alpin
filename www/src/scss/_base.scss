@@ -1,0 +1,43 @@
+html, body {
+	overflow-x: hidden !important;
+	height: 100%;
+	min-height: 100vh;
+	min-height: -webkit-fill-available;
+}
+body {
+	font-family: 'Urbanist', Fallback, sans-serif;
+	scroll-behavior: smooth;
+	color: $dark-gray;
+	-webkit-overflow-scrolling: touch;
+}
+.container-fluid {
+	padding-left: 0;
+	padding-right: 0;
+}
+.container {
+	padding-left: 44px;
+	padding-right: 44px;
+	@media (max-width: 1919px) {
+		padding-left: 32px;
+		padding-right: 32px;
+	}
+	@media (max-width: 991px) {
+		padding-left: 24px;
+		padding-right: 24px;
+	}
+	@media (max-width: 450px) {
+		padding-left: 19px;
+		padding-right: 19px;
+	}
+}
+.navbar {
+	padding-top: 1.3rem;
+	padding-bottom: 1.3rem;
+}
+
+.bg-light-gray {
+	background: $light-gray;
+}
+.bg-gray {
+	background: $gray;
+}

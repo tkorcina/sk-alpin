@@ -1,0 +1,21 @@
+$fa-font-path: '../fonts';
+
+$dark-gray: #2f2d34;
+$gray: #244f3b;
+$light-gray: #deefe6;
+$ultra-light-gray: #f8f8f8;
+
+$input-btn-focus-width: 2px;
+
+$grid-breakpoints: (
+	xs: 0,
+	sm: 450px,
+	md: 991px,
+	lg: 1366px,
+	xl: 1920px,
+);
+
+$container-max-widths: (
+	sm: 1366px,
+	lg: 1920px,
+);
