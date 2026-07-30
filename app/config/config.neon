@@ -115,6 +115,8 @@ services:
 		setup:
 			- setFraudDetection(%authenticator.fraudDetection%)
 
+	- App\Model\Service\FileService(%uploadDir%, %uploadDirPart%)
+
 	# Components
 	- App\Components\Controls\Paginator\IPaginatorControlFactory
 

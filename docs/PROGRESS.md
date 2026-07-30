@@ -17,11 +17,12 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 ## Hotovo
 
 - [x] Zadání a progress log v `docs/`.
+- [x] Entity dle datového modelu: `Event`, `News`, `Gallery`, `Photo`, `Page`, `File`, `ContactMessage` + trait `TPublished`, enumy `EventType`, `Enum\Page`.
+- [x] Query objekty + factory: Event, News, Gallery, Page, ContactMessage (published/slug/upcoming/past filtry, výchozí řazení).
+- [x] `FileService` (upload do `www/data/upload`, registrace v `config.neon`).
 
 ## Rozpracováno / další kroky
 
-- [ ] Entity dle datového modelu (Event, News, Gallery, Photo, Page, File, ContactMessage) + traity/enumy.
-- [ ] Query objekty + factory pro nové entity, FileService.
 - [ ] Migrace DB (diff + seed výchozích stránek).
 - [ ] Kostra veřejné části: presentery + šablony (Akce, Aktuality, Fotogalerie, O nás, Kontakt) + hezké routy.
 - [ ] Kontaktní formulář (uložení ContactMessage + odeslání e-mailu).
@@ -30,3 +31,4 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 ## Log
 
 - **2026-07-30** — Založen progress log, uloženo zadání. Prozkoumána firemní šablona a referenční projekt `ondrejzamecnik.loc`, odsouhlasen rozsah kostry: entity + model + migrace + kostra veřejné části.
+- **2026-07-30** — Modelová vrstva: entity, enumy, trait TPublished, query objekty s factory, FileService.
