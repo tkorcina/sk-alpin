@@ -1,22 +1,30 @@
 {block content}
 
-<section class="container g-py-40">
-	<h1>{$event->getTitle()}</h1>
-	<p>
-		<strong>Termín:</strong> {$event->getDateFrom()|date:'j. n. Y'}{if $event->getDateTo()} – {$event->getDateTo()|date:'j. n. Y'}{/if}<br>
-		<strong>Místo:</strong> {$event->getPlace()}<br>
-		<strong>Typ:</strong> {$event->getTypeLabel()}<br>
-		<strong>Určeno pro veřejnost:</strong> {$event->isPublic() ? 'ano' : 'ne'}
-	</p>
+<section class="section">
+	<div class="container">
+		<h1>{$event->getTitle()}</h1>
 
-	<div>{$event->getDescription()|noescape}</div>
+		<div class="detail-meta">
+			<strong>Termín:</strong> {$event->getDateFrom()|date:'j. n. Y'}{if $event->getDateTo()} – {$event->getDateTo()|date:'j. n. Y'}{/if}<br>
+			<strong>Místo:</strong> {$event->getPlace()}<br>
+			<strong>Typ:</strong> {$event->getTypeLabel()}<br>
+			<strong>Určeno pro veřejnost:</strong> {$event->isPublic() ? 'ano' : 'ne'}
+		</div>
 
-	<div n:if="$galleries">
-		<h2>Fotogalerie z akce</h2>
-		<p n:foreach="$galleries as $gallery">
-			<a n:href="Gallery:detail slug => $gallery->getSlug()">{$gallery->getTitle()}</a>
-		</p>
+		<div class="page-content">{$event->getDescription()|noescape}</div>
+
+		<div n:if="$galleries" class="mt-4">
+			<h2>Fotogalerie z akce</h2>
+			<div class="row">
+				<div n:foreach="$galleries as $gallery" class="col-md-4">
+					<a n:href="Gallery:detail slug => $gallery->getSlug()" class="gallery-card">
+						<img n:if="$gallery->getMainImage()" class="gallery-thumb" src="{$basePath}{$gallery->getMainImage()->getPath()}" alt="{$gallery->getTitle()}">
+						<h3>{$gallery->getTitle()}</h3>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<p class="mt-4"><a n:href="default">&larr; Zpět na seznam akcí</a></p>
 	</div>
-
-	<p><a n:href="default">&larr; Zpět na seznam akcí</a></p>
 </section>

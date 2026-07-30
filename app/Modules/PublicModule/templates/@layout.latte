@@ -18,16 +18,19 @@
 </head>
 
 <body>
-	<header class="g-bg-white g-brd-bottom g-brd-gray-light-v4">
-		<div class="container d-md-flex justify-content-between align-items-center g-py-15">
-			<a n:href="Homepage:default" class="g-font-weight-700 g-font-size-22 g-color-black g-text-decoration-none--hover">SK-Alpin z.s.</a>
-			<nav class="g-pt-10 g-pt-0--md">
-				<a n:href="Homepage:default" class="g-mr-15">Úvod</a>
-				<a n:href="Page:default internalName => about" class="g-mr-15">O nás</a>
-				<a n:href="Event:default" class="g-mr-15">Akce</a>
-				<a n:href="Gallery:default" class="g-mr-15">Fotogalerie</a>
-				<a n:href="News:default" class="g-mr-15">Aktuality</a>
-				<a n:href="Contact:default">Kontakt</a>
+	<header class="site-header">
+		<div class="container d-md-flex justify-content-between align-items-center py-3">
+			<a n:href="Homepage:default" class="site-brand">
+				<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M2 28 L12 8 L18 19 L22 12 L32 28 Z" fill="#2c5e3f"/><path d="M12 8 L15 14 L12 13 L9 14 Z" fill="#deefe6"/></svg>
+				<span>SK-Alpin<span class="site-brand-sub">sport a pohyb v přírodě</span></span>
+			</a>
+			<nav class="site-nav mt-2 mt-md-0">
+				<a n:href="Homepage:default" n:class="$presenter->isLinkCurrent('Homepage:*') ? active">Úvod</a>
+				<a n:href="Page:default internalName => about" n:class="$presenter->isLinkCurrent('Page:*') ? active">O nás</a>
+				<a n:href="Event:default" n:class="$presenter->isLinkCurrent('Event:*') ? active">Akce</a>
+				<a n:href="Gallery:default" n:class="$presenter->isLinkCurrent('Gallery:*') ? active">Fotogalerie</a>
+				<a n:href="News:default" n:class="$presenter->isLinkCurrent('News:*') ? active">Aktuality</a>
+				<a n:href="Contact:default" n:class="$presenter->isLinkCurrent('Contact:*') ? active">Kontakt</a>
 			</nav>
 		</div>
 	</header>
@@ -36,10 +39,10 @@
 
 		{snippet flashes}
 			<div n:foreach="$flashes as $flash" n:class="alert, show, my-0, rounded-0,
-					$flash->type === 'success' ? 'g-bg-teal g-color-white',
-					$flash->type === 'danger' ? 'g-bg-red g-color-white',
-					$flash->type === 'warning' ? 'g-bg-yellow',
-					$flash->type === 'info' ? 'g-bg-gray-dark-v2 g-color-white',
+					$flash->type === 'success' ? 'alert-success',
+					$flash->type === 'danger' ? 'alert-danger',
+					$flash->type === 'warning' ? 'alert-warning',
+					$flash->type === 'info' ? 'alert-info',
 				"
 				role="alert"
 			>
@@ -60,14 +63,17 @@
 
 		{include content}
 
-		<footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20">
+		<footer class="site-footer">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12 text-center text-md-left g-mb-0--md">
-						<div class="d-flex flex-column align-items-center">
-							<small class="d-block g-font-size-default">SK-Alpin z.s. &middot; Potocká 107/53, Kohoutovice, 623 00 Brno &middot; IČO: 22688391</small>
-							<small class="d-block g-font-size-default g-mr-10">© {Nette\Utils\DateTime::from('now')|date:'Y'} sk-alpin.cz</small>
-						</div>
+					<div class="col-md-6">
+						<strong>SK-Alpin z.s.</strong><br>
+						Potocká 107/53, Kohoutovice, 623 00 Brno<br>
+						IČO: 22688391
+					</div>
+					<div class="col-md-6 text-md-end mt-3 mt-md-0">
+						<a n:href="Contact:default">Kontakt</a><br>
+						<small>© {Nette\Utils\DateTime::from('now')|date:'Y'} sk-alpin.cz</small>
 					</div>
 				</div>
 			</div>

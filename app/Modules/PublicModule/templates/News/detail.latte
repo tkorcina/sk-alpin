@@ -1,12 +1,14 @@
 {block content}
 
-<section class="container g-py-40">
-	<h1>{$news->getTitle()}</h1>
-	<p>{$news->getPublishedAt()|date:'j. n. Y'}</p>
+<section class="section">
+	<div class="container">
+		<h1>{$news->getTitle()}</h1>
+		<p><span class="date-badge">{$news->getPublishedAt()|date:'j. n. Y'}</span></p>
 
-	<img n:if="$news->getImage()" src="{$basePath}{$news->getImage()->getPath()}" alt="{$news->getTitle()}" class="img-fluid g-mb-20">
+		<img n:if="$news->getImage()" src="{$basePath}{$news->getImage()->getPath()}" alt="{$news->getTitle()}" class="img-fluid rounded mb-4" style="max-height: 480px">
 
-	<div>{$news->getContent()|noescape}</div>
+		<div class="page-content">{$news->getContent()|noescape}</div>
 
-	<p><a n:href="default">&larr; Zpět na aktuality</a></p>
+		<p class="mt-4"><a n:href="default">&larr; Zpět na aktuality</a></p>
+	</div>
 </section>

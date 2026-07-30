@@ -1,14 +1,18 @@
 {block content}
 
-<section class="container g-py-40">
-	<h1>Aktuality</h1>
+<section class="section">
+	<div class="container">
+		<h1>Aktuality</h1>
 
-	<p n:if="!$newsList">Zatím tu nejsou žádné aktuality.</p>
+		<p n:if="!$newsList">Zatím tu nejsou žádné aktuality.</p>
 
-	<article n:foreach="$newsList as $news" class="g-mb-30">
-		<h2><a n:href="detail slug => $news->getSlug()">{$news->getTitle()}</a></h2>
-		<p>{$news->getPublishedAt()|date:'j. n. Y'}</p>
-	</article>
+		<div class="item-list">
+			<article n:foreach="$newsList as $news" class="item-row">
+				<span class="date-badge">{$news->getPublishedAt()|date:'j. n. Y'}</span>
+				<h3><a n:href="detail slug => $news->getSlug()">{$news->getTitle()}</a></h3>
+			</article>
+		</div>
 
-	{control paginator}
+		{control paginator}
+	</div>
 </section>

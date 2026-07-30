@@ -1,43 +1,66 @@
 {block content}
 
-<section class="container g-py-40">
-	<h1>{$page->getTitle()}</h1>
-	<div>{$page->getContent()|noescape}</div>
+<section class="hero">
+	<div class="container">
+		<h1>{$page->getTitle()}</h1>
+		<p class="hero-motto">Orientační běh, pěší, vodní, lyžařská, letecká i motoristická turistika. Výlety a akce i pro veřejnost.</p>
+		<a n:href="Event:default" class="btn btn-light mt-3">Podívejte se na naše akce</a>
+	</div>
+	<svg class="hero-mountains" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 L150 22 L280 55 L420 10 L560 48 L700 18 L840 52 L980 25 L1100 45 L1200 30 L1200 70 Z" fill="#ffffff"/></svg>
 </section>
 
-<section class="container g-py-40">
-	<h2>Nejbližší akce</h2>
-	<p n:if="!$upcomingEvents">Momentálně nejsou naplánované žádné akce.</p>
-	<div class="row">
-		<div n:foreach="$upcomingEvents as $event" class="col-md-4 g-mb-20">
-			<h3><a n:href="Event:detail slug => $event->getSlug()">{$event->getTitle()}</a></h3>
-			<p>
-				{$event->getDateFrom()|date:'j. n. Y'}{if $event->getDateTo()} – {$event->getDateTo()|date:'j. n. Y'}{/if}
-				&middot; {$event->getPlace()}
-				&middot; {$event->getTypeLabel()}
-			</p>
+<section class="section">
+	<div class="container">
+		<div class="page-content">{$page->getContent()|noescape}</div>
+	</div>
+</section>
+
+<section class="section section-alt">
+	<div class="container">
+		<h2>Nejbližší akce</h2>
+		<p n:if="!$upcomingEvents">Momentálně nejsou naplánované žádné akce.</p>
+		<div class="row">
+			<div n:foreach="$upcomingEvents as $event" class="col-md-4 mb-4">
+				<div class="card-item">
+					<span class="date-badge">{$event->getDateFrom()|date:'j. n. Y'}{if $event->getDateTo()} – {$event->getDateTo()|date:'j. n. Y'}{/if}</span>
+					<h3><a n:href="Event:detail slug => $event->getSlug()">{$event->getTitle()}</a></h3>
+					<p class="item-meta">{$event->getPlace()}</p>
+					<span class="type-badge">{$event->getTypeLabel()}</span>
+				</div>
+			</div>
 		</div>
+		<p class="section-more"><a n:href="Event:default">Všechny akce &rarr;</a></p>
 	</div>
-	<p><a n:href="Event:default">Všechny akce &rarr;</a></p>
 </section>
 
-<section class="container g-py-40">
-	<h2>Aktuality</h2>
-	<p n:if="!$latestNews">Zatím tu nejsou žádné aktuality.</p>
-	<div class="row">
-		<div n:foreach="$latestNews as $news" class="col-md-4 g-mb-20">
-			<h3><a n:href="News:detail slug => $news->getSlug()">{$news->getTitle()}</a></h3>
-			<p>{$news->getPublishedAt()|date:'j. n. Y'}</p>
+<section class="section">
+	<div class="container">
+		<h2>Aktuality</h2>
+		<p n:if="!$latestNews">Zatím tu nejsou žádné aktuality.</p>
+		<div class="row">
+			<div n:foreach="$latestNews as $news" class="col-md-4 mb-4">
+				<div class="card-item">
+					<span class="date-badge">{$news->getPublishedAt()|date:'j. n. Y'}</span>
+					<h3><a n:href="News:detail slug => $news->getSlug()">{$news->getTitle()}</a></h3>
+				</div>
+			</div>
 		</div>
+		<p class="section-more"><a n:href="News:default">Všechny aktuality &rarr;</a></p>
 	</div>
-	<p><a n:href="News:default">Všechny aktuality &rarr;</a></p>
 </section>
 
-<section class="container g-py-40" n:if="$latestGallery">
-	<h2>Z fotogalerie</h2>
-	<div n:foreach="$latestGallery as $gallery">
-		<h3><a n:href="Gallery:detail slug => $gallery->getSlug()">{$gallery->getTitle()}</a></h3>
-		<p n:if="$gallery->getDate()">{$gallery->getDate()|date:'j. n. Y'}</p>
+<section class="section section-alt" n:if="$latestGallery">
+	<div class="container">
+		<h2>Z fotogalerie</h2>
+		<div class="row">
+			<div n:foreach="$latestGallery as $gallery" class="col-md-4">
+				<a n:href="Gallery:detail slug => $gallery->getSlug()" class="gallery-card">
+					<img n:if="$gallery->getMainImage()" class="gallery-thumb" src="{$basePath}{$gallery->getMainImage()->getPath()}" alt="{$gallery->getTitle()}">
+					<h3>{$gallery->getTitle()}</h3>
+					<p class="item-meta" n:if="$gallery->getDate()">{$gallery->getDate()|date:'j. n. Y'}</p>
+				</a>
+			</div>
+		</div>
+		<p class="section-more"><a n:href="Gallery:default">Všechny galerie &rarr;</a></p>
 	</div>
-	<p><a n:href="Gallery:default">Všechny galerie &rarr;</a></p>
 </section>

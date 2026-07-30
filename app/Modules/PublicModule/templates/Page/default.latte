@@ -1,7 +1,9 @@
 {block content}
 
-<section class="container g-py-40">
-	<h1>{$page->getTitle()}</h1>
-	<img n:if="$page->getImage()" src="{$basePath}{$page->getImage()->getPath()}" alt="{$page->getTitle()}" class="img-fluid g-mb-20">
-	<div>{$page->getContent()|noescape}</div>
+<section class="section">
+	<div class="container">
+		<h1>{$page->getTitle()}</h1>
+		<img n:if="$page->getImage()" src="{$basePath}{$page->getImage()->getPath()}" alt="{$page->getTitle()}" class="img-fluid rounded mb-4">
+		<div class="page-content">{$page->getContent()|noescape}</div>
+	</div>
 </section>

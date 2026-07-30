@@ -1,28 +1,30 @@
 {block content}
 
-<section class="container g-py-40">
-	<h1>Akce</h1>
+<section class="section">
+	<div class="container">
+		<h1>Akce</h1>
 
-	<h2>Nadcházející akce</h2>
-	<p n:if="!$upcomingEvents">Momentálně nejsou naplánované žádné akce.</p>
-	<div n:foreach="$upcomingEvents as $event" class="g-mb-20">
-		<h3><a n:href="detail slug => $event->getSlug()">{$event->getTitle()}</a></h3>
-		<p>
-			{$event->getDateFrom()|date:'j. n. Y'}{if $event->getDateTo()} – {$event->getDateTo()|date:'j. n. Y'}{/if}
-			&middot; {$event->getPlace()}
-			&middot; {$event->getTypeLabel()}
-			{if $event->isPublic()}&middot; pro veřejnost{/if}
-		</p>
-	</div>
+		<h2 class="mt-4">Nadcházející akce</h2>
+		<p n:if="!$upcomingEvents">Momentálně nejsou naplánované žádné akce.</p>
+		<div class="item-list">
+			<div n:foreach="$upcomingEvents as $event" class="item-row">
+				<span class="date-badge">{$event->getDateFrom()|date:'j. n. Y'}{if $event->getDateTo()} – {$event->getDateTo()|date:'j. n. Y'}{/if}</span>
+				<span class="type-badge">{$event->getTypeLabel()}</span>
+				<span class="type-badge" n:if="$event->isPublic()">pro veřejnost</span>
+				<h3><a n:href="detail slug => $event->getSlug()">{$event->getTitle()}</a></h3>
+				<p class="item-meta">{$event->getPlace()}</p>
+			</div>
+		</div>
 
-	<h2>Proběhlé akce</h2>
-	<p n:if="!$pastEvents">Zatím žádné proběhlé akce.</p>
-	<div n:foreach="$pastEvents as $event" class="g-mb-20">
-		<h3><a n:href="detail slug => $event->getSlug()">{$event->getTitle()}</a></h3>
-		<p>
-			{$event->getDateFrom()|date:'j. n. Y'}{if $event->getDateTo()} – {$event->getDateTo()|date:'j. n. Y'}{/if}
-			&middot; {$event->getPlace()}
-			&middot; {$event->getTypeLabel()}
-		</p>
+		<h2 class="mt-5">Proběhlé akce</h2>
+		<p n:if="!$pastEvents">Zatím žádné proběhlé akce.</p>
+		<div class="item-list">
+			<div n:foreach="$pastEvents as $event" class="item-row">
+				<span class="date-badge">{$event->getDateFrom()|date:'j. n. Y'}{if $event->getDateTo()} – {$event->getDateTo()|date:'j. n. Y'}{/if}</span>
+				<span class="type-badge">{$event->getTypeLabel()}</span>
+				<h3><a n:href="detail slug => $event->getSlug()">{$event->getTitle()}</a></h3>
+				<p class="item-meta">{$event->getPlace()}</p>
+			</div>
+		</div>
 	</div>
 </section>

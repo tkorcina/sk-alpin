@@ -1,17 +1,19 @@
 {block content}
 
-<section class="container g-py-40">
-	<h1>Fotogalerie</h1>
+<section class="section">
+	<div class="container">
+		<h1>Fotogalerie</h1>
 
-	<p n:if="!$galleries">Zatím tu nejsou žádné galerie.</p>
+		<p n:if="!$galleries">Zatím tu nejsou žádné galerie.</p>
 
-	<div class="row">
-		<div n:foreach="$galleries as $gallery" class="col-md-4 g-mb-30">
-			<a n:href="detail slug => $gallery->getSlug()">
-				<img n:if="$gallery->getMainImage()" src="{$basePath}{$gallery->getMainImage()->getPath()}" alt="{$gallery->getTitle()}" class="img-fluid">
-			</a>
-			<h2><a n:href="detail slug => $gallery->getSlug()">{$gallery->getTitle()}</a></h2>
-			<p n:if="$gallery->getDate()">{$gallery->getDate()|date:'j. n. Y'}</p>
+		<div class="row">
+			<div n:foreach="$galleries as $gallery" class="col-md-4 mb-4">
+				<a n:href="detail slug => $gallery->getSlug()" class="gallery-card">
+					<img n:if="$gallery->getMainImage()" class="gallery-thumb" src="{$basePath}{$gallery->getMainImage()->getPath()}" alt="{$gallery->getTitle()}">
+					<h3>{$gallery->getTitle()}</h3>
+					<p class="item-meta" n:if="$gallery->getDate()">{$gallery->getDate()|date:'j. n. Y'}</p>
+				</a>
+			</div>
 		</div>
 	</div>
 </section>
