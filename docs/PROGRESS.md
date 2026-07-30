@@ -21,9 +21,10 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 - [x] Query objekty + factory: Event, News, Gallery, Page, ContactMessage (published/slug/upcoming/past filtry, výchozí řazení).
 - [x] `FileService` (upload do `www/data/upload`, registrace v `config.neon`).
 
+- [x] Migrace DB (`Version20260730104424` — nové tabulky, `Version20260730104500` — seed stránek home/about/contact), spuštěno na lokální DB, `orm:validate-schema` OK.
+
 ## Rozpracováno / další kroky
 
-- [ ] Migrace DB (diff + seed výchozích stránek).
 - [ ] Kostra veřejné části: presentery + šablony (Akce, Aktuality, Fotogalerie, O nás, Kontakt) + hezké routy.
 - [ ] Kontaktní formulář (uložení ContactMessage + odeslání e-mailu).
 - [ ] Stub presenterů administrace + menu (CRUD až ve Fázi 4).
@@ -32,3 +33,4 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 
 - **2026-07-30** — Založen progress log, uloženo zadání. Prozkoumána firemní šablona a referenční projekt `ondrejzamecnik.loc`, odsouhlasen rozsah kostry: entity + model + migrace + kostra veřejné části.
 - **2026-07-30** — Modelová vrstva: entity, enumy, trait TPublished, query objekty s factory, FileService.
+- **2026-07-30** — Migrace vygenerovány a spuštěny na lokální DB (pozn.: `temp/cache` vlastní www-data, CLI příkazy je potřeba pouštět přes `sudo make m-diff` / `m-migrate`, nebo s vlastním temp adresářem).
