@@ -65,7 +65,14 @@ class ContactForm extends BaseForm
 		$this->em->persist($contactMessage);
 		$this->em->flush($contactMessage);
 
-		$this->sendContactMessage($contactMessage);
+		// zprava je ulozena v DB (prehled v administraci); selhani SMTP nesmi
+		// polozit formular pro navstevnika - loguje se do mailer.log (priorita
+		// EXCEPTION by pres Tracy zkousela poslat e-mail stejnym rozbitym SMTP)
+		try {
+			$this->sendContactMessage($contactMessage);
+		} catch (\Throwable $e) {
+			\Tracy\Debugger::log('Kontaktní formulář: odeslání e-mailu selhalo — ' . $e->getMessage(), 'mailer');
+		}
 
 		$this->presenter->flashMessageSuccess('Děkujeme za zprávu, ozveme se vám co nejdříve.');
 		$this->presenter->redirect('this');
