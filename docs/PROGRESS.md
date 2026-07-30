@@ -28,9 +28,13 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 
 - [x] Administrace: CRUD pro akce, aktuality a fotogalerie — gridy (ublaboo přes `BaseGrid`), formuláře (CKEditor na popisech, upload obrázku u aktuality, hromadný upload fotek u galerie + mazání jednotlivých fotek), menu v layoutu. Otestováno přes přihlášení: vytvoření/editace/smazání akce, aktualita s obrázkem, galerie se 2 fotkami, smazání fotky.
 
+- [x] Stylování veřejné části dle zadání (cílovka 40–65 let): přírodní paleta (lesní zelená `#2c5e3f`, jezerní modrá, zemitá hnědá, krémové pozadí), základní písmo 17 px / řádkování 1.65, hero s horami (SVG silueta), karty s datem/typem akce, aktivní položka v menu, sticky patička. SCSS v `www/src/scss` (hlavně `_page.scss`), build `./node_modules/.bin/gulp css` (funguje bez sudo, když `www/dist/css` vlastní korca).
+
 ## Rozpracováno / další kroky
 
 - [ ] Administrace: editace stránek (WYSIWYG) a přehled zpráv z formuláře — zbytek Fáze 4.
+- [ ] Skutečná hero fotka z hor místo CSS přechodu (až budou podklady).
+- [ ] Responsivní kontrola na reálném mobilu (Bootstrap grid stackuje pod 991 px, vizuálně neověřeno).
 - [ ] Resize obrázků + náhledy (Nette Image) a lightbox v galerii — Fáze 3.
 - [ ] Hero fotka, styly a „turistický“ vzhled (Fáze 2/5) — teď je jen minimální markup nad firemní šablonou.
 - [ ] Stránkování aktualit doladit (komponenta Paginator je zapojená, chybí ověření s více záznamy).
@@ -46,3 +50,4 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 - **2026-07-30** — Migrace vygenerovány a spuštěny na lokální DB (pozn.: `temp/cache` vlastní www-data, CLI příkazy je potřeba pouštět přes `sudo make m-diff` / `m-migrate`, nebo s vlastním temp adresářem).
 - **2026-07-30** — Veřejná část: presentery, šablony, routy, kontaktní formulář. Ověřeno na http://sk-alpin.loc/ (všechny stránky 200, 404 funguje, formulář se vykresluje, `/administrace` přesměruje na login). Pozn.: kvůli neznámým třídám v RobotLoader cache přejmenován `temp/cache` → `temp/cache.old` (nešlo smazat bez sudo) — **smazat ručně: `sudo rm -rf temp/cache.old temp/cache.old2`**.
 - **2026-07-30** — Administrace: CRUD akce/aktuality/galerie, vytvořen lokální admin uživatel, vše otestováno end-to-end přes HTTP (login, uložení, upload, mazání). Testovací data po ověření smazána.
+- **2026-07-30** — Stylování veřejné části, ověřeno v Chrome (úvod, akce, galerie, kontakt). V DB nechána ukázková data (5 akcí, 3 aktuality, 2 galerie s placeholder obrázky `www/data/upload/sample_*.png`) — před produkcí smazat. Úklid pro sudo: `sudo rm -rf temp/cache.old temp/cache.old2 temp/cache.old3 www/dist/css.old`.
