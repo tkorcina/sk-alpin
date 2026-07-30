@@ -1,0 +1,28 @@
+{block content}
+
+<section class="container g-py-40">
+	<h1>Akce</h1>
+
+	<h2>Nadcházející akce</h2>
+	<p n:if="!$upcomingEvents">Momentálně nejsou naplánované žádné akce.</p>
+	<div n:foreach="$upcomingEvents as $event" class="g-mb-20">
+		<h3><a n:href="detail slug => $event->getSlug()">{$event->getTitle()}</a></h3>
+		<p>
+			{$event->getDateFrom()|date:'j. n. Y'}{if $event->getDateTo()} – {$event->getDateTo()|date:'j. n. Y'}{/if}
+			&middot; {$event->getPlace()}
+			&middot; {$event->getTypeLabel()}
+			{if $event->isPublic()}&middot; pro veřejnost{/if}
+		</p>
+	</div>
+
+	<h2>Proběhlé akce</h2>
+	<p n:if="!$pastEvents">Zatím žádné proběhlé akce.</p>
+	<div n:foreach="$pastEvents as $event" class="g-mb-20">
+		<h3><a n:href="detail slug => $event->getSlug()">{$event->getTitle()}</a></h3>
+		<p>
+			{$event->getDateFrom()|date:'j. n. Y'}{if $event->getDateTo()} – {$event->getDateTo()|date:'j. n. Y'}{/if}
+			&middot; {$event->getPlace()}
+			&middot; {$event->getTypeLabel()}
+		</p>
+	</div>
+</section>

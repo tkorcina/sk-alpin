@@ -23,14 +23,19 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 
 - [x] Migrace DB (`Version20260730104424` — nové tabulky, `Version20260730104500` — seed stránek home/about/contact), spuštěno na lokální DB, `orm:validate-schema` OK.
 
+- [x] Kostra veřejné části: presentery + šablony (Homepage, Akce, Aktuality, Fotogalerie, O nás, Kontakt), navigace v layoutu, hezké routy (`/akce`, `/aktuality`, `/fotogalerie`, `/o-nas`, `/kontakt`).
+- [x] Kontaktní formulář — uložení `ContactMessage` + odeslání e-mailu (parametry `contactEmail` / `noReplyEmail` v configu, honeypot antispam).
+
 ## Rozpracováno / další kroky
 
-- [ ] Kostra veřejné části: presentery + šablony (Akce, Aktuality, Fotogalerie, O nás, Kontakt) + hezké routy.
-- [ ] Kontaktní formulář (uložení ContactMessage + odeslání e-mailu).
-- [ ] Stub presenterů administrace + menu (CRUD až ve Fázi 4).
+- [ ] Administrace: CRUD agendy (akce, aktuality, galerie s hromadným uploadem, stránky WYSIWYG, přehled zpráv) — Fáze 4.
+- [ ] Resize obrázků + náhledy (Nette Image) a lightbox v galerii — Fáze 3.
+- [ ] Hero fotka, styly a „turistický“ vzhled (Fáze 2/5) — teď je jen minimální markup nad firemní šablonou.
+- [ ] Stránkování aktualit doladit (komponenta Paginator je zapojená, chybí ověření s více záznamy).
 
 ## Log
 
 - **2026-07-30** — Založen progress log, uloženo zadání. Prozkoumána firemní šablona a referenční projekt `ondrejzamecnik.loc`, odsouhlasen rozsah kostry: entity + model + migrace + kostra veřejné části.
 - **2026-07-30** — Modelová vrstva: entity, enumy, trait TPublished, query objekty s factory, FileService.
 - **2026-07-30** — Migrace vygenerovány a spuštěny na lokální DB (pozn.: `temp/cache` vlastní www-data, CLI příkazy je potřeba pouštět přes `sudo make m-diff` / `m-migrate`, nebo s vlastním temp adresářem).
+- **2026-07-30** — Veřejná část: presentery, šablony, routy, kontaktní formulář. Ověřeno na http://sk-alpin.loc/ (všechny stránky 200, 404 funguje, formulář se vykresluje, `/administrace` přesměruje na login). Pozn.: kvůli neznámým třídám v RobotLoader cache přejmenován `temp/cache` → `temp/cache.old` (nešlo smazat bez sudo) — **smazat ručně: `sudo rm -rf temp/cache.old`**.

@@ -1,0 +1,22 @@
+{block content}
+
+<section class="container g-py-40">
+	<h1>{$gallery->getTitle()}</h1>
+	<p n:if="$gallery->getDate()">{$gallery->getDate()|date:'j. n. Y'}</p>
+	<p n:if="$gallery->getEvent()">
+		Fotky z akce <a n:href="Event:detail slug => $gallery->getEvent()->getSlug()">{$gallery->getEvent()->getTitle()}</a>
+	</p>
+
+	<p n:if="!$gallery->getPhotos()">V galerii zatím nejsou žádné fotky.</p>
+
+	{* TODO: lightbox (GLightbox) az v ramci Faze 3 *}
+	<div class="row">
+		<div n:foreach="$gallery->getPhotos() as $photo" class="col-6 col-md-3 g-mb-20">
+			<a href="{$basePath}{$photo->getFile()->getPath()}">
+				<img src="{$basePath}{$photo->getFile()->getPath()}" alt="{$photo->getDescription() ?? $gallery->getTitle()}" class="img-fluid">
+			</a>
+		</div>
+	</div>
+
+	<p><a n:href="default">&larr; Zpět na fotogalerie</a></p>
+</section>

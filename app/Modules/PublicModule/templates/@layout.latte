@@ -18,6 +18,20 @@
 </head>
 
 <body>
+	<header class="g-bg-white g-brd-bottom g-brd-gray-light-v4">
+		<div class="container d-md-flex justify-content-between align-items-center g-py-15">
+			<a n:href="Homepage:default" class="g-font-weight-700 g-font-size-22 g-color-black g-text-decoration-none--hover">SK-Alpin z.s.</a>
+			<nav class="g-pt-10 g-pt-0--md">
+				<a n:href="Homepage:default" class="g-mr-15">Úvod</a>
+				<a n:href="Page:default internalName => about" class="g-mr-15">O nás</a>
+				<a n:href="Event:default" class="g-mr-15">Akce</a>
+				<a n:href="Gallery:default" class="g-mr-15">Fotogalerie</a>
+				<a n:href="News:default" class="g-mr-15">Aktuality</a>
+				<a n:href="Contact:default">Kontakt</a>
+			</nav>
+		</div>
+	</header>
+
 	<main>
 
 		{snippet flashes}
@@ -50,7 +64,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 text-center text-md-left g-mb-0--md">
-						<div class="d-flex justify-content-center">
+						<div class="d-flex flex-column align-items-center">
+							<small class="d-block g-font-size-default">SK-Alpin z.s. &middot; Potocká 107/53, Kohoutovice, 623 00 Brno &middot; IČO: 22688391</small>
 							<small class="d-block g-font-size-default g-mr-10">© {Nette\Utils\DateTime::from('now')|date:'Y'} sk-alpin.cz</small>
 						</div>
 					</div>

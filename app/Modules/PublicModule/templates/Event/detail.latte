@@ -1,0 +1,22 @@
+{block content}
+
+<section class="container g-py-40">
+	<h1>{$event->getTitle()}</h1>
+	<p>
+		<strong>Termín:</strong> {$event->getDateFrom()|date:'j. n. Y'}{if $event->getDateTo()} – {$event->getDateTo()|date:'j. n. Y'}{/if}<br>
+		<strong>Místo:</strong> {$event->getPlace()}<br>
+		<strong>Typ:</strong> {$event->getTypeLabel()}<br>
+		<strong>Určeno pro veřejnost:</strong> {$event->isPublic() ? 'ano' : 'ne'}
+	</p>
+
+	<div>{$event->getDescription()|noescape}</div>
+
+	<div n:if="$galleries">
+		<h2>Fotogalerie z akce</h2>
+		<p n:foreach="$galleries as $gallery">
+			<a n:href="Gallery:detail slug => $gallery->getSlug()">{$gallery->getTitle()}</a>
+		</p>
+	</div>
+
+	<p><a n:href="default">&larr; Zpět na seznam akcí</a></p>
+</section>

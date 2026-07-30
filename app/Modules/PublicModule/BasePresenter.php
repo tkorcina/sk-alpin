@@ -2,12 +2,21 @@
 
 namespace App\Modules\PublicModule;
 
+use App\Model\Entity\Page;
+use App\Model\Query\PageQueryFactory;
+use Doctrine\ORM\NoResultException;
 use Nette\Application\Attributes\Persistent;
+use Nette\DI\Attributes\Inject;
 use Nette\Utils\Paginator;
 
 abstract class BasePresenter extends \App\Modules\BasePresenter
 {
 	protected ?Paginator $paginator = null;
+
+	protected ?Page $page = null;
+
+	#[Inject]
+	public PageQueryFactory $pageQueryFactory;
 
 	#[Persistent]
 	public $locale = 'cs';
@@ -26,6 +35,20 @@ abstract class BasePresenter extends \App\Modules\BasePresenter
 		$this->template->locale = $this->translator->getLocale() ?? 'cs';
 		$this->template->validateCache = !$this->getHttpRequest()->getCookie('cacheDeleted');
 		parent::beforeRender();
+	}
+
+	protected function loadPage(string $internalName): Page
+	{
+		try {
+			$this->page = $this->pageQueryFactory
+				->create()
+				->byInternalName($internalName)
+				->fetchOne();
+		} catch (NoResultException) {
+			$this->error();
+		}
+
+		return $this->page;
 	}
 
 }

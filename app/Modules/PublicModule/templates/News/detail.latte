@@ -1,0 +1,12 @@
+{block content}
+
+<section class="container g-py-40">
+	<h1>{$news->getTitle()}</h1>
+	<p>{$news->getPublishedAt()|date:'j. n. Y'}</p>
+
+	<img n:if="$news->getImage()" src="{$basePath}{$news->getImage()->getPath()}" alt="{$news->getTitle()}" class="img-fluid g-mb-20">
+
+	<div>{$news->getContent()|noescape}</div>
+
+	<p><a n:href="default">&larr; Zpět na aktuality</a></p>
+</section>

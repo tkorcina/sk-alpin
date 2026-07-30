@@ -1,0 +1,14 @@
+{block content}
+
+<section class="container g-py-40">
+	<h1>Aktuality</h1>
+
+	<p n:if="!$newsList">Zatím tu nejsou žádné aktuality.</p>
+
+	<article n:foreach="$newsList as $news" class="g-mb-30">
+		<h2><a n:href="detail slug => $news->getSlug()">{$news->getTitle()}</a></h2>
+		<p>{$news->getPublishedAt()|date:'j. n. Y'}</p>
+	</article>
+
+	{control paginator}
+</section>

@@ -1,3 +1,43 @@
 {block content}
 
-Homepage
+<section class="container g-py-40">
+	<h1>{$page->getTitle()}</h1>
+	<div>{$page->getContent()|noescape}</div>
+</section>
+
+<section class="container g-py-40">
+	<h2>Nejbližší akce</h2>
+	<p n:if="!$upcomingEvents">Momentálně nejsou naplánované žádné akce.</p>
+	<div class="row">
+		<div n:foreach="$upcomingEvents as $event" class="col-md-4 g-mb-20">
+			<h3><a n:href="Event:detail slug => $event->getSlug()">{$event->getTitle()}</a></h3>
+			<p>
+				{$event->getDateFrom()|date:'j. n. Y'}{if $event->getDateTo()} – {$event->getDateTo()|date:'j. n. Y'}{/if}
+				&middot; {$event->getPlace()}
+				&middot; {$event->getTypeLabel()}
+			</p>
+		</div>
+	</div>
+	<p><a n:href="Event:default">Všechny akce &rarr;</a></p>
+</section>
+
+<section class="container g-py-40">
+	<h2>Aktuality</h2>
+	<p n:if="!$latestNews">Zatím tu nejsou žádné aktuality.</p>
+	<div class="row">
+		<div n:foreach="$latestNews as $news" class="col-md-4 g-mb-20">
+			<h3><a n:href="News:detail slug => $news->getSlug()">{$news->getTitle()}</a></h3>
+			<p>{$news->getPublishedAt()|date:'j. n. Y'}</p>
+		</div>
+	</div>
+	<p><a n:href="News:default">Všechny aktuality &rarr;</a></p>
+</section>
+
+<section class="container g-py-40" n:if="$latestGallery">
+	<h2>Z fotogalerie</h2>
+	<div n:foreach="$latestGallery as $gallery">
+		<h3><a n:href="Gallery:detail slug => $gallery->getSlug()">{$gallery->getTitle()}</a></h3>
+		<p n:if="$gallery->getDate()">{$gallery->getDate()|date:'j. n. Y'}</p>
+	</div>
+	<p><a n:href="Gallery:default">Všechny galerie &rarr;</a></p>
+</section>

@@ -7,6 +7,8 @@ parameters:
 	uploadDir: %dataDir%/upload
 	uploadDirPart: /data/upload
 	reportSender: tomaskorcina@seznam.cz
+	contactEmail: info@sk-alpin.cz
+	noReplyEmail: noreply@sk-alpin.cz
 	mailer:
 		smtp: true
 		host: smpt.host
@@ -71,6 +73,9 @@ decorator:
 		inject: true
 	App\Model\Service\BaseService:
 		inject: true
+	App\Components\Forms\Contact\ContactForm:
+		setup:
+			- setEmails(%contactEmail%, %noReplyEmail%)
 
 search:
 	-

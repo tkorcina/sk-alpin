@@ -1,0 +1,13 @@
+{block content}
+
+<section class="container g-py-40">
+	<h1>{$page->getTitle()}</h1>
+	<div>{$page->getContent()|noescape}</div>
+
+	<div class="row">
+		<div class="col-lg-8">
+			<h2>Napište nám</h2>
+			{control contactForm}
+		</div>
+	</div>
+</section>
