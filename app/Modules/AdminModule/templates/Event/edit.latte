@@ -1,0 +1,15 @@
+{block content}
+
+<div class="my-5">
+	<h1 class="h3 text-center">Akce — {if $row}{$row->getTitle()}{else}přidat akci{/if}</h1>
+	<div class="w-100 d-flex justify-content-end">
+		<a class="btn btn-warning border-radius-none" n:href="default">Zrušit{if $row} editaci{/if}</a>
+	</div>
+	{control eventForm}
+</div>
+
+{/block}
+
+{block js}
+	{include '../include/ckeditorJs.latte'}
+{/block}
