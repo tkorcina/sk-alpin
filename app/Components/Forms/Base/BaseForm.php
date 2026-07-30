@@ -28,7 +28,25 @@ abstract class BaseForm extends \ADT\DoctrineForms\BaseForm
 	#[Autowire]
 	protected SecurityUser $securityUser;
 
+	#[Autowire]
+	protected FileService $fileService;
+
 	protected string $wwwDir = WWW_DIR;
+
+	public static array $imageExtensions = [
+		".jpg",
+		".jpeg",
+		".png",
+		".gif",
+		".webp",
+	];
+
+	public static array $imageMimeTypes = [
+		"image/gif",
+		"image/jpeg",
+		"image/png",
+		"image/webp",
+	];
 
 	public function __construct()
 	{

@@ -38,6 +38,11 @@ class Page extends BaseEntity
 		return $this->internalName;
 	}
 
+	public function isDeletable(): bool
+	{
+		return false;
+	}
+
 	public function setTitle(string $title): Page
 	{
 		$this->title = $title;
