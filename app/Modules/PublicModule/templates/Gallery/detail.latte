@@ -12,10 +12,9 @@
 
 		<p n:if="!$gallery->getPhotos()">V galerii zatím nejsou žádné fotky.</p>
 
-		{* TODO: lightbox (GLightbox) az v ramci Faze 3 *}
 		<div class="row photo-grid">
 			<div n:foreach="$gallery->getPhotos() as $photo" class="col-6 col-md-3 mb-4">
-				<a href="{$basePath}{$photo->getFile()->getPath()}">
+				<a href="{$basePath}{$photo->getFile()->getPath()}" class="glightbox" data-gallery="gallery-{$gallery->getId()}" data-description="{$photo->getDescription()}">
 					<img src="{$basePath}{$photo->getFile()->getPath()}" alt="{$photo->getDescription() ?? $gallery->getTitle()}">
 				</a>
 			</div>

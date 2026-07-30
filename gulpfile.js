@@ -26,6 +26,7 @@ const jsFiles = [
 	'node_modules/jquery-ui/ui/i18n/datepicker-cs.js',
 	'node_modules/jquery-ui-timepicker-addon/dist/jquery-ui-timepicker-addon.js',
 	'node_modules/js-cookie/dist/js.cookie.js',
+	'node_modules/glightbox/dist/js/glightbox.min.js',
 
 	// app
 	'www/src/js/*.js',
