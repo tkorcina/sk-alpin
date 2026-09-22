@@ -1,0 +1,19 @@
+// Raleway — variabilní font (jeden soubor pokrývá váhy 100–900)
+@font-face {
+	font-family: 'Raleway';
+	src: url('../fonts/Raleway-Variable.woff2') format('woff2-variations'),
+		url('../fonts/Raleway-Variable.woff2') format('woff2'),
+		url('../fonts/Raleway-Variable.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Raleway';
+	src: url('../fonts/Raleway-Italic-Variable.woff2') format('woff2-variations'),
+		url('../fonts/Raleway-Italic-Variable.woff2') format('woff2'),
+		url('../fonts/Raleway-Italic-Variable.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: italic;
+	font-display: swap;
+}

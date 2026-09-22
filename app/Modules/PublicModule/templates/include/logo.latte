@@ -2,9 +2,9 @@
 	Výchozí logo: nápis „SK-ALPIN“ vyplněný zimní horskou krajinou — obloha s měkkým světlem slunce,
 	vzdálené hřebeny v atmosférické perspektivě, zasněžené štíty přecházející do skály a zasněžený svah
 	s lyžařskými stopami. Použije se, když v Nastavení není nahrané vlastní logo.
-	Inline SVG — dědí písmo Urbanist z webu. viewBox je oříznutý přesně na nápis (kvůli zarovnání s okrajem obsahu).
+	Inline SVG — používá písmo Raleway (900) z webu. viewBox je oříznutý přesně na nápis (kvůli zarovnání s okrajem obsahu).
 *}
-<svg class="site-logo site-logo-default" viewBox="45.6 9 229 43" width="341" height="64" role="img" aria-label="SK-Alpin">
+<svg class="site-logo site-logo-default" viewBox="37.6 9 245 43" width="365" height="64" role="img" aria-label="SK-Alpin">
 	<defs>
 		<linearGradient id="skSky" x1="0" y1="0" x2="0" y2="1">
 			<stop offset="0" stop-color="#3d7fb5"/>
@@ -38,28 +38,28 @@
 			<stop offset="1" stop-color="#000000" stop-opacity="0"/>
 		</linearGradient>
 		<clipPath id="skClip">
-			<text x="160" y="50" text-anchor="middle" font-family="Urbanist, 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="54" letter-spacing="-1">SK-ALPIN</text>
+			<text x="160" y="50" text-anchor="middle" font-family="Raleway, 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="54" letter-spacing="-1">SK-ALPIN</text>
 		</clipPath>
 	</defs>
 	<g clip-path="url(#skClip)">
 		{* obloha a světlo slunce *}
-		<rect x="40" y="5" width="240" height="50" fill="url(#skSky)"/>
-		<rect x="40" y="5" width="240" height="50" fill="url(#skSun)"/>
+		<rect x="34" y="5" width="252" height="50" fill="url(#skSky)"/>
+		<rect x="34" y="5" width="252" height="50" fill="url(#skSun)"/>
 		{* vzdálený hřeben — v oparu *}
-		<path d="M40 40 C60 30, 74 24, 92 26 C104 28, 112 19, 128 21 C142 23, 150 15, 168 19 C182 23, 192 17, 208 21 C222 25, 232 17, 248 23 C260 27, 270 25, 280 29 L280 55 L40 55 Z" fill="url(#skFar)"/>
+		<path d="M34 40 C60 30, 74 24, 92 26 C104 28, 112 19, 128 21 C142 23, 150 15, 168 19 C182 23, 192 17, 208 21 C222 25, 232 17, 248 23 C260 27, 270 25, 280 29 L286 55 L34 55 Z" fill="url(#skFar)"/>
 		{* hlavní hřeben — skála *}
-		<path d="M40 46 L62 22 L74 32 L92 13 L108 30 L120 26 L138 36 L160 15 L178 32 L194 26 L212 37 L236 18 L254 33 L268 28 L280 36 L280 55 L40 55 Z" fill="url(#skRock)"/>
+		<path d="M34 46 L62 22 L74 32 L92 13 L108 30 L120 26 L138 36 L160 15 L178 32 L194 26 L212 37 L236 18 L254 33 L268 28 L286 38 L286 55 L34 55 Z" fill="url(#skRock)"/>
 		{* sníh na vrcholech s nepravidelnou sněžnou čárou *}
-		<path d="M40 46 L62 22 L74 32 L92 13 L108 30 L120 26 L138 36 L160 15 L178 32 L194 26 L212 37 L236 18 L254 33 L268 28 L280 36 L280 40 C272 38, 262 40, 254 40 C247 39, 241 32, 236 28 C231 34, 222 42, 212 43 C205 41, 199 35, 194 33 C189 35, 183 39, 178 39 C172 36, 165 27, 160 24 C154 29, 146 41, 138 42 C131 40, 125 34, 120 32 C115 33, 111 37, 108 37 C102 32, 96 23, 92 21 C86 27, 78 37, 74 38 C69 35, 65 30, 62 29 C56 35, 48 45, 40 50 Z" fill="url(#skRockSnow)"/>
+		<path d="M34 46 L62 22 L74 32 L92 13 L108 30 L120 26 L138 36 L160 15 L178 32 L194 26 L212 37 L236 18 L254 33 L268 28 L280 36 L280 40 C272 38, 262 40, 254 40 C247 39, 241 32, 236 28 C231 34, 222 42, 212 43 C205 41, 199 35, 194 33 C189 35, 183 39, 178 39 C172 36, 165 27, 160 24 C154 29, 146 41, 138 42 C131 40, 125 34, 120 32 C115 33, 111 37, 108 37 C102 32, 96 23, 92 21 C86 27, 78 37, 74 38 C69 35, 65 30, 62 29 C56 35, 48 45, 40 50 Z" fill="url(#skRockSnow)"/>
 		{* stinné (východní) strany štítů *}
-		<path d="M62 22 L74 32 L70 55 L58 55 Z M92 13 L108 30 L102 55 L88 55 Z M120 26 L138 36 L132 55 L118 55 Z M160 15 L178 32 L172 55 L156 55 Z M194 26 L212 37 L206 55 L192 55 Z M236 18 L254 33 L248 55 L232 55 Z M268 28 L280 36 L280 55 L264 55 Z" fill="#22364a" opacity=".32"/>
+		<path d="M62 22 L74 32 L70 55 L58 55 Z M92 13 L108 30 L102 55 L88 55 Z M120 26 L138 36 L132 55 L118 55 Z M160 15 L178 32 L172 55 L156 55 Z M194 26 L212 37 L206 55 L192 55 Z M236 18 L254 33 L248 55 L232 55 Z M268 28 L286 38 L286 55 L264 55 Z" fill="#22364a" opacity=".32"/>
 		{* zasněžený svah v popředí *}
-		<path d="M40 45 C70 42, 100 49, 140 45 C175 41, 205 49, 240 45 C255 43, 268 44, 280 47 L280 55 L40 55 Z" fill="url(#skSlope)"/>
-		<path d="M40 45 C70 42, 100 49, 140 45 C175 41, 205 49, 240 45 C255 43, 268 44, 280 47 L280 55 L40 55 Z" fill="url(#skShade)"/>
+		<path d="M34 45 C70 42, 100 49, 140 45 C175 41, 205 49, 240 45 C255 43, 268 44, 286 48 L286 55 L34 55 Z" fill="url(#skSlope)"/>
+		<path d="M34 45 C70 42, 100 49, 140 45 C175 41, 205 49, 240 45 C255 43, 268 44, 286 48 L286 55 L34 55 Z" fill="url(#skShade)"/>
 		{* stopy lyží *}
-		<path d="M48 49 C80 46.5, 105 52, 140 48.5 S195 46.5, 225 51 S262 48, 280 50" fill="none" stroke="#b7c9d8" stroke-width="1.1" stroke-linecap="round" opacity=".9"/>
-		<path d="M48 51.5 C80 49, 105 54.5, 140 51 S195 49, 225 53.5 S262 50.5, 280 52.5" fill="none" stroke="#b7c9d8" stroke-width="1.1" stroke-linecap="round" opacity=".9"/>
+		<path d="M40 49.5 C80 46.5, 105 52, 140 48.5 S195 46.5, 225 51 S262 48, 286 50.5" fill="none" stroke="#b7c9d8" stroke-width="1.1" stroke-linecap="round" opacity=".9"/>
+		<path d="M40 52 C80 49, 105 54.5, 140 51 S195 49, 225 53.5 S262 50.5, 286 53" fill="none" stroke="#b7c9d8" stroke-width="1.1" stroke-linecap="round" opacity=".9"/>
 	</g>
 	{* obrys písma *}
-	<text x="160" y="50" text-anchor="middle" font-family="Urbanist, 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="54" letter-spacing="-1" fill="none" stroke="#2c4658" stroke-width="1.2" stroke-linejoin="round">SK-ALPIN</text>
+	<text x="160" y="50" text-anchor="middle" font-family="Raleway, 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="54" letter-spacing="-1" fill="none" stroke="#2c4658" stroke-width="1.2" stroke-linejoin="round">SK-ALPIN</text>
 </svg>

@@ -5,7 +5,9 @@ html, body {
 	min-height: -webkit-fill-available;
 }
 body {
-	font-family: 'Urbanist', Fallback, sans-serif;
+	font-family: 'Raleway', 'Segoe UI', Arial, sans-serif;
+	font-feature-settings: 'lnum' 1; // Raleway má výchozí „skákavé“ číslice, u dat chceme řádkové
+	font-variant-numeric: lining-nums;
 	scroll-behavior: smooth;
 	color: $dark-gray;
 	-webkit-overflow-scrolling: touch;
