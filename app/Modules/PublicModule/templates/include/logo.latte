@@ -1,33 +1,65 @@
 {*
-	Výchozí logo: nápis „SK-ALPIN“ vyplněný zimní horskou krajinou — nebe se sluncem, zasněžené štíty,
-	sjezdovka s lyžařskými stopami, les dole. Použije se, když v Nastavení není nahrané vlastní logo.
-	Inline SVG — dědí písmo Urbanist z webu.
+	Výchozí logo: nápis „SK-ALPIN“ vyplněný zimní horskou krajinou — obloha s měkkým světlem slunce,
+	vzdálené hřebeny v atmosférické perspektivě, zasněžené štíty přecházející do skály a zasněžený svah
+	s lyžařskými stopami. Použije se, když v Nastavení není nahrané vlastní logo.
+	Inline SVG — dědí písmo Urbanist z webu. viewBox je oříznutý přesně na nápis (kvůli zarovnání s okrajem obsahu).
 *}
 <svg class="site-logo site-logo-default" viewBox="45.6 9 229 43" width="341" height="64" role="img" aria-label="SK-Alpin">
 	<defs>
 		<linearGradient id="skSky" x1="0" y1="0" x2="0" y2="1">
-			<stop offset="0" stop-color="#4fa3d8"/>
-			<stop offset="1" stop-color="#cfe8f6"/>
+			<stop offset="0" stop-color="#3d7fb5"/>
+			<stop offset=".45" stop-color="#8dbbdc"/>
+			<stop offset="1" stop-color="#e6eff5"/>
+		</linearGradient>
+		<radialGradient id="skSun" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(238 17) scale(26)">
+			<stop offset="0" stop-color="#fff3c4" stop-opacity=".95"/>
+			<stop offset=".22" stop-color="#fbe6a3" stop-opacity=".7"/>
+			<stop offset="1" stop-color="#fbe6a3" stop-opacity="0"/>
+		</radialGradient>
+		<linearGradient id="skFar" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0" stop-color="#b9cbd9"/>
+			<stop offset="1" stop-color="#8ea6ba"/>
+		</linearGradient>
+		<linearGradient id="skRock" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0" stop-color="#8797a6"/>
+			<stop offset="1" stop-color="#4b5d6e"/>
+		</linearGradient>
+		<linearGradient id="skRockSnow" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0" stop-color="#ffffff"/>
+			<stop offset="1" stop-color="#dde7ee"/>
+		</linearGradient>
+		<linearGradient id="skSlope" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0" stop-color="#ffffff"/>
+			<stop offset="1" stop-color="#cfdde8"/>
+		</linearGradient>
+		<linearGradient id="skShade" x1="0" y1="0" x2="1" y2="0">
+			<stop offset="0" stop-color="#000000" stop-opacity="0"/>
+			<stop offset=".5" stop-color="#000000" stop-opacity=".18"/>
+			<stop offset="1" stop-color="#000000" stop-opacity="0"/>
 		</linearGradient>
 		<clipPath id="skClip">
 			<text x="160" y="50" text-anchor="middle" font-family="Urbanist, 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="54" letter-spacing="-1">SK-ALPIN</text>
 		</clipPath>
 	</defs>
 	<g clip-path="url(#skClip)">
-		{* nebe + slunce *}
-		<rect x="0" y="0" width="320" height="56" fill="url(#skSky)"/>
-		<circle cx="248" cy="18" r="8" fill="#f9d566"/>
-		{* zasněžené štíty *}
-		<path d="M-5 40 L20 18 L36 30 L58 12 L80 32 L100 22 L124 36 L150 14 L172 34 L196 24 L218 38 L246 16 L270 34 L294 22 L325 36 L325 56 L-5 56 Z" fill="#5f7f99"/>
-		<path d="M58 12 L64.5 19 L58 17 L51.5 19 Z M150 14 L156 21 L150 19 L144 21 Z M246 16 L252 23 L246 21 L240 23 Z M20 18 L25 23.5 L20 22 L15 23.5 Z M294 22 L298.5 27 L294 25.5 L289.5 27 Z" fill="#ffffff"/>
-		{* sjezdovka — bílý svah se stopami lyží *}
-		<path d="M-5 40 L40 30 L90 42 L150 30 L210 44 L260 32 L325 42 L325 56 L-5 56 Z" fill="#ffffff"/>
-		<path d="M30 36 C70 33, 100 44, 140 40 S200 37, 230 46 S285 39, 320 44" fill="none" stroke="#9fbfd4" stroke-width="1.5" stroke-linecap="round"/>
-		<path d="M30 39.5 C70 36.5, 100 47.5, 140 43.5 S200 40.5, 230 49.5 S285 42.5, 320 47.5" fill="none" stroke="#9fbfd4" stroke-width="1.5" stroke-linecap="round"/>
-		{* les *}
-		<path d="M-5 48 L6 42 L16 48 L26 41 L36 48 L46 42 L56 48 L68 40 L80 48 L92 42 L102 48 L116 41 L128 48 L140 43 L152 48 L166 41 L178 48 L190 42 L200 48 L214 41 L226 48 L238 43 L250 48 L264 41 L276 48 L288 43 L300 48 L312 42 L325 48 L325 56 L-5 56 Z" fill="#3f7a52"/>
-		<path d="M-5 52 L12 48 L26 52 L42 47 L58 52 L74 48 L90 52 L106 47 L122 52 L138 48 L154 52 L170 47 L186 52 L202 48 L218 52 L234 47 L250 52 L266 48 L282 52 L298 47 L325 52 L325 56 L-5 56 Z" fill="#2c5e3f"/>
+		{* obloha a světlo slunce *}
+		<rect x="40" y="5" width="240" height="50" fill="url(#skSky)"/>
+		<rect x="40" y="5" width="240" height="50" fill="url(#skSun)"/>
+		{* vzdálený hřeben — v oparu *}
+		<path d="M40 40 C60 30, 74 24, 92 26 C104 28, 112 19, 128 21 C142 23, 150 15, 168 19 C182 23, 192 17, 208 21 C222 25, 232 17, 248 23 C260 27, 270 25, 280 29 L280 55 L40 55 Z" fill="url(#skFar)"/>
+		{* hlavní hřeben — skála *}
+		<path d="M40 46 L62 22 L74 32 L92 13 L108 30 L120 26 L138 36 L160 15 L178 32 L194 26 L212 37 L236 18 L254 33 L268 28 L280 36 L280 55 L40 55 Z" fill="url(#skRock)"/>
+		{* sníh na vrcholech s nepravidelnou sněžnou čárou *}
+		<path d="M40 46 L62 22 L74 32 L92 13 L108 30 L120 26 L138 36 L160 15 L178 32 L194 26 L212 37 L236 18 L254 33 L268 28 L280 36 L280 40 C272 38, 262 40, 254 40 C247 39, 241 32, 236 28 C231 34, 222 42, 212 43 C205 41, 199 35, 194 33 C189 35, 183 39, 178 39 C172 36, 165 27, 160 24 C154 29, 146 41, 138 42 C131 40, 125 34, 120 32 C115 33, 111 37, 108 37 C102 32, 96 23, 92 21 C86 27, 78 37, 74 38 C69 35, 65 30, 62 29 C56 35, 48 45, 40 50 Z" fill="url(#skRockSnow)"/>
+		{* stinné (východní) strany štítů *}
+		<path d="M62 22 L74 32 L70 55 L58 55 Z M92 13 L108 30 L102 55 L88 55 Z M120 26 L138 36 L132 55 L118 55 Z M160 15 L178 32 L172 55 L156 55 Z M194 26 L212 37 L206 55 L192 55 Z M236 18 L254 33 L248 55 L232 55 Z M268 28 L280 36 L280 55 L264 55 Z" fill="#22364a" opacity=".32"/>
+		{* zasněžený svah v popředí *}
+		<path d="M40 45 C70 42, 100 49, 140 45 C175 41, 205 49, 240 45 C255 43, 268 44, 280 47 L280 55 L40 55 Z" fill="url(#skSlope)"/>
+		<path d="M40 45 C70 42, 100 49, 140 45 C175 41, 205 49, 240 45 C255 43, 268 44, 280 47 L280 55 L40 55 Z" fill="url(#skShade)"/>
+		{* stopy lyží *}
+		<path d="M48 49 C80 46.5, 105 52, 140 48.5 S195 46.5, 225 51 S262 48, 280 50" fill="none" stroke="#b7c9d8" stroke-width="1.1" stroke-linecap="round" opacity=".9"/>
+		<path d="M48 51.5 C80 49, 105 54.5, 140 51 S195 49, 225 53.5 S262 50.5, 280 52.5" fill="none" stroke="#b7c9d8" stroke-width="1.1" stroke-linecap="round" opacity=".9"/>
 	</g>
 	{* obrys písma *}
-	<text x="160" y="50" text-anchor="middle" font-family="Urbanist, 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="54" letter-spacing="-1" fill="none" stroke="#1e4a30" stroke-width="1.4" stroke-linejoin="round">SK-ALPIN</text>
+	<text x="160" y="50" text-anchor="middle" font-family="Urbanist, 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="54" letter-spacing="-1" fill="none" stroke="#2c4658" stroke-width="1.2" stroke-linejoin="round">SK-ALPIN</text>
 </svg>
