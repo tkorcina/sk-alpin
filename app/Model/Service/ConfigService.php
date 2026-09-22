@@ -109,6 +109,7 @@ class ConfigService extends BaseService
 			companyIco: $this->getConfigValue(ConfigKey::COMPANY_ICO) ?? '',
 			logo: $this->getConfigFile(ConfigKey::LOGO),
 			heroImage: $this->getConfigFile(ConfigKey::HERO_IMAGE),
+			analyticsId: $this->getConfigValue(ConfigKey::ANALYTICS_ID) ?? '',
 		);
 	}
 

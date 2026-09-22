@@ -365,3 +365,47 @@ main {
 	max-width: 50rem;
 	font-size: 1.0625rem;
 }
+
+// GDPR / cookie lišta
+.cookie-bar {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1050;
+	background: $forest-dark;
+	color: #fff;
+	box-shadow: 0 -4px 16px rgba(#000, .25);
+	font-size: 1rem;
+
+	.cookie-bar-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.cookie-bar-text {
+		margin: 0;
+		flex: 1 1 28rem;
+
+		a {
+			color: #fff;
+			text-decoration: underline;
+		}
+	}
+
+	.cookie-bar-buttons {
+		display: flex;
+		gap: .75rem;
+		flex-wrap: wrap;
+
+		.btn {
+			font-weight: 600;
+			min-width: 9rem;
+		}
+	}
+}

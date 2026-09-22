@@ -49,6 +49,12 @@ class SettingsForm extends BaseForm
 
 		$form->addText(ConfigKey::COMPANY_ICO, 'IČO');
 
+		$form->addText(ConfigKey::ANALYTICS_ID, 'Google Analytics — Measurement ID')
+			->setHtmlAttribute('placeholder', 'G-XXXXXXXXXX')
+			->setOption('description', 'Nechte prázdné, pokud návštěvnost neměříte. Když je vyplněno, měření se načte až po souhlasu návštěvníka v cookie liště.')
+			->addCondition(\Nette\Forms\Form::Filled)
+				->addRule(\Nette\Forms\Form::Pattern, 'Measurement ID má tvar G-XXXXXXXXXX.', '(G|UA|GT)-[A-Z0-9-]+');
+
 
 		$form->addUpload(ConfigKey::LOGO, 'Logo')
 			->setOption('description', 'Když není nahrané, použije se výchozí logo webu. Ideálně PNG/SVG s průhledným pozadím, výška cca 50 px.')
@@ -71,6 +77,7 @@ class SettingsForm extends BaseForm
 			ConfigKey::COMPANY_NAME => $settings->getCompanyName(),
 			ConfigKey::COMPANY_ADDRESS => $settings->getCompanyAddress(),
 			ConfigKey::COMPANY_ICO => $settings->getCompanyIco(),
+			ConfigKey::ANALYTICS_ID => $settings->getAnalyticsId(),
 		]);
 	}
 
@@ -83,6 +90,7 @@ class SettingsForm extends BaseForm
 			ConfigKey::COMPANY_NAME,
 			ConfigKey::COMPANY_ADDRESS,
 			ConfigKey::COMPANY_ICO,
+			ConfigKey::ANALYTICS_ID,
 		] as $key) {
 			$this->configService->setConfigValue($key, trim((string) $values[$key]));
 		}

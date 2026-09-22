@@ -65,6 +65,7 @@ class NewsPresenter extends BasePresenter
 		}
 
 		$this->template->pageTitle = $this->template->news->getTitle();
+		$this->setMeta($this->template->news->getContent(), $this->template->news->getImage());
 	}
 
 	public function createComponentPaginator(IPaginatorControlFactory $factory): Paginator

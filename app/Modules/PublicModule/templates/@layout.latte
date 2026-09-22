@@ -5,15 +5,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="index, follow">
 	<meta name="author" content="Tomáš Korcina aka Korca">
-	<meta name="description" content="{$settings->getDescription()}">
+	<meta name="description" content="{$metaDescription}">
+	<link rel="canonical" href="{$canonicalUrl}">
 
 	<title>{ifset $pageTitle}{$pageTitle} | {/ifset}{$settings->getSiteTitle()}</title>
 
+	{* Open Graph / sdílení odkazu *}
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="cs_CZ">
+	<meta property="og:site_name" content="{$settings->getSiteTitle()}">
+	<meta property="og:title" content="{ifset $pageTitle}{$pageTitle} | {/ifset}{$settings->getSiteTitle()}">
+	<meta property="og:description" content="{$metaDescription}">
+	<meta property="og:url" content="{$canonicalUrl}">
+	<meta property="og:image" n:if="$ogImage" content="{$ogImage}">
+	<meta name="twitter:card" content="{$ogImage ? 'summary_large_image' : 'summary'}">
 
-	<link rel="preload" href="{$basePath}/dist/fonts/Urbanist-ExtraLight.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="{$basePath}/dist/fonts/Urbanist-Light.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="{$basePath}/dist/fonts/Urbanist-Regular.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="{$basePath}/dist/fonts/Urbanist-Bold.woff2" as="font" type="font/woff2" crossorigin>
+	{* Favicony (generované z loga — www/images/favicons) *}
+	<link rel="icon" href="{$basePath}/favicon.ico" sizes="32x32">
+	<link rel="icon" href="{$basePath}/images/favicons/favicon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="{$basePath}/images/favicons/apple-touch-icon.png">
+	<link rel="manifest" href="{$basePath}/images/favicons/site.webmanifest">
+	<meta name="theme-color" content="#2c5e3f">
+
+	<link rel="preload" href="{$basePath}/dist/fonts/Raleway-Variable.woff2" as="font" type="font/woff2" crossorigin>
 
 	<link rel="stylesheet" href="{$basePath}/dist/css/app.css">
 
@@ -94,6 +108,8 @@
 			</div>
 		</footer>
 	</main>
+
+	{include 'include/cookieBar.latte'}
 
 	{block scripts}
 		{ifset componentJs}{include componentJs}{/ifset}

@@ -15,6 +15,7 @@ class PagePresenter extends BasePresenter
 	public function renderDefault(): void
 	{
 		$this->template->page = $this->page;
+		$this->setMeta($this->page->getContent());
 	}
 
 }

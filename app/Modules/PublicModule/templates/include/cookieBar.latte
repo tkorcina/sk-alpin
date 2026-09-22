@@ -1,0 +1,27 @@
+{*
+	GDPR / cookie lišta. Volba se ukládá do localStorage (klíč skCookieConsent: "all" | "necessary").
+	Měření návštěvnosti (Google Analytics) se načte jen při souhlasu a jen když je v Nastavení vyplněno Measurement ID.
+	Logika je v www/src/js/base.js.
+*}
+{var $analytics = $settings->getAnalyticsId()}
+<script n:if="$analytics">window.skAnalyticsId = {$analytics};</script>
+<div class="cookie-bar" id="cookieBar" hidden role="dialog" aria-live="polite" aria-label="Informace o cookies">
+	<div class="container cookie-bar-inner">
+		<p class="cookie-bar-text">
+			{if $analytics}
+				Tento web používá nezbytné cookies pro svůj chod a s vaším souhlasem také anonymní měření návštěvnosti (Google Analytics).
+			{else}
+				Tento web používá pouze nezbytné cookies pro svůj chod. Žádné údaje o vás nesledujeme ani nepředáváme třetím stranám.
+			{/if}
+			<a n:href="Contact:default">Kontakt</a>
+		</p>
+		<div class="cookie-bar-buttons">
+			{if $analytics}
+				<button type="button" class="btn btn-outline-light" data-cookie-consent="necessary">Pouze nezbytné</button>
+				<button type="button" class="btn btn-light" data-cookie-consent="all">Souhlasím</button>
+			{else}
+				<button type="button" class="btn btn-light" data-cookie-consent="necessary">Rozumím</button>
+			{/if}
+		</div>
+	</div>
+</div>

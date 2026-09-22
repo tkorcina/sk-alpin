@@ -34,4 +34,7 @@ class ConfigKey
 	/** Úvodní (hero) obrázek na homepage (File) — když není, použije se barevný přechod */
 	const HERO_IMAGE = 'heroImage';
 
+	/** Google Analytics 4 Measurement ID (G-XXXXXXX) — měření se načte až po souhlasu v cookie liště */
+	const ANALYTICS_ID = 'analyticsId';
+
 }

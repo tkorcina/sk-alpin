@@ -21,6 +21,7 @@ final class SiteSettings
 		private string $companyIco,
 		private ?File $logo,
 		private ?File $heroImage,
+		private string $analyticsId = '',
 	) {}
 
 	public function getSiteTitle(): string
@@ -61,6 +62,11 @@ final class SiteSettings
 	public function getHeroImage(): ?File
 	{
 		return $this->heroImage;
+	}
+
+	public function getAnalyticsId(): string
+	{
+		return $this->analyticsId;
 	}
 
 }

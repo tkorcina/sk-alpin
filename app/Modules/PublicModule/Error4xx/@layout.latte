@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <title>SK Alpin</title>
+    <title>Stránka nenalezena | SK-Alpin</title>
 
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -20,9 +20,9 @@
 
     {block head}{/block}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="{$basePath}/favicon.ico" sizes="32x32">
+    <link rel="icon" href="{$basePath}/images/favicons/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="{$basePath}/dist/css/app.css">
 
     <script src="{$basePath}/dist/js/app.js?v={mt_rand(999, 999999)}"></script>
 </head>
@@ -34,8 +34,8 @@
         <div class="g-absolute-centered">
             {include content}
 
-            <a href="https://sk-alpin.cz" class="text-uppercase g-color-black g-color-primary--hover g-text-no-underline--hover">
-                Back to homepage.
+            <a href="{$basePath}/" class="text-uppercase g-color-black g-color-primary--hover g-text-no-underline--hover">
+                Zpět na úvodní stránku
             </a>
         </div>
     </div>

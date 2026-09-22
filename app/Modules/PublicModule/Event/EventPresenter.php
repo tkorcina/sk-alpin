@@ -48,6 +48,7 @@ class EventPresenter extends BasePresenter
 
 		$this->template->event = $event;
 		$this->template->pageTitle = $event->getTitle();
+		$this->setMeta($event->getDescription());
 		$this->template->galleries = $this->galleryQueryFactory
 			->create()
 			->byIsPublished()

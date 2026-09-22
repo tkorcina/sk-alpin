@@ -1,14 +1,14 @@
 {contentType application/xml}
 {var $today = new \DateTime()}
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
->
-    <url>
-        <loc>{plink //:Public:Homepage:default}</loc>
-        <lastmod>{$today|date:"Y-m-d"}</lastmod>
-    </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url><loc>{plink //Homepage:default}</loc><lastmod>{$today|date:'Y-m-d'}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+	<url><loc>{plink //Page:default internalName => about}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+	<url><loc>{plink //Event:default}</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+	<url><loc>{plink //News:default}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+	<url><loc>{plink //Gallery:default}</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+	<url><loc>{plink //Contact:default}</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+	<url n:foreach="$events as $event"><loc>{plink //Event:detail slug => $event->getSlug()}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+	<url n:foreach="$newsList as $news"><loc>{plink //News:detail slug => $news->getSlug()}</loc><lastmod>{$news->getPublishedAt()|date:'Y-m-d'}</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+	<url n:foreach="$galleries as $gallery"><loc>{plink //Gallery:detail slug => $gallery->getSlug()}</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
 </urlset>

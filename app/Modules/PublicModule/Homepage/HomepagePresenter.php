@@ -23,6 +23,13 @@ class HomepagePresenter extends BasePresenter
 	#[Inject]
 	public GalleryQueryFactory $galleryQueryFactory;
 
+	public function renderSitemap(): void
+	{
+		$this->template->events = $this->eventQueryFactory->create()->byIsPublished()->fetch();
+		$this->template->newsList = $this->newsQueryFactory->create()->byIsPublished()->fetch();
+		$this->template->galleries = $this->galleryQueryFactory->create()->byIsPublished()->fetch();
+	}
+
 	public function actionDefault(): void
 	{
 		$this->loadPage(Page::PAGE_HOME_INTERNAL_NAME);

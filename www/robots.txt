@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /administrace/
+
+Sitemap: https://sk-alpin.cz/sitemap.xml

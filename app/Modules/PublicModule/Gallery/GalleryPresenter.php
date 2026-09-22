@@ -35,6 +35,7 @@ class GalleryPresenter extends BasePresenter
 		}
 
 		$this->template->pageTitle = $this->template->gallery->getTitle();
+		$this->setMeta(null, $this->template->gallery->getMainImage());
 	}
 
 }
