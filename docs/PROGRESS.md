@@ -34,10 +34,12 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 - [x] Kontaktní formulář: selhání SMTP nepoloží odeslání — zpráva se vždy uloží do DB, chyba se loguje do `log/mailer.log` (nesmí se logovat s prioritou exception, Tracy by ji zkoušela poslat tímtéž rozbitým SMTP).
 - [x] Lightbox ve fotogalerii — GLightbox (yarn balíček, zapojený do gulp js/css, init v `www/src/js/base.js`, třída `.glightbox` v šabloně detailu galerie).
 - [x] Responsivní hamburger menu pod 991 px — animovaná ikonka (3 čáry → křížek), bootstrap collapse, odkazy pod sebou.
+- [x] Administrace: sekce **Nastavení** (`/administrace/settings`) — jeden formulář s pevnými poli: název webu, motto, popisek, název spolku, adresa, IČO, logo, úvodní obrázek. Hodnoty v tabulce `config` (klíče v `Enum\ConfigKey`, obrázky jako `type = file` s id entity `File`), načítá `ConfigService::getSiteSettings()` → DTO `SiteSettings`, které je ve veřejných šablonách jako `$settings`. Web z něj bere `<title>` (`Stránka | Název webu`), meta description, hlavičku (logo + název + motto), hero na úvodu (popisek + volitelná fotka na pozadí s tmavým přechodem) a patičku.
+- [x] Výchozí logo — inline SVG (`templates/include/logo.latte`): tučné „SK“ vyplněné horskou krajinou (nebe, slunce, zasněžené štíty, les), pod tím prostrkané „ALPIN“. Použije se, dokud není v Nastavení nahrané vlastní logo.
 
 ## Rozpracováno / další kroky
 
-- [ ] Skutečná hero fotka z hor místo CSS přechodu (až budou podklady).
+- [ ] Skutečná hero fotka z hor — mechanika hotová (upload v Nastavení), chybí jen podklad.
 - [ ] Responsivní kontrola na reálném mobilu (mechanika collapse ověřena přes JS, vizuálně neověřeno — resize okna přes automatizaci nefungoval).
 - [ ] Resize/náhledy obrázků při uploadu (Nette Image) — zbytek Fáze 3.
 - [ ] Fáze 5: SEO (sitemap už má routu, meta popisky), favicon, GDPR lišta, nasazení.
@@ -46,6 +48,8 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 - [ ] Stránkování aktualit doladit (komponenta Paginator je zapojená, chybí ověření s více záznamy).
 
 ## Přístupy (lokální)
+
+- Přihlašovací jméno do administrace je **e-mail** uživatele (tabulka `user`, ověřuje `Authenticator::verifyCredentials` přes `byEmail`).
 
 - Admin: `tomask@appsdevteam.com` / `admin123` (uživatel vložen ručně do lokální DB, v produkci nahradit).
 
@@ -57,4 +61,5 @@ Průběžný log toho, co je hotové, co se dělá a co je dál. Zadání viz [z
 - **2026-07-30** — Veřejná část: presentery, šablony, routy, kontaktní formulář. Ověřeno na http://sk-alpin.loc/ (všechny stránky 200, 404 funguje, formulář se vykresluje, `/administrace` přesměruje na login). Pozn.: kvůli neznámým třídám v RobotLoader cache přejmenován `temp/cache` → `temp/cache.old` (nešlo smazat bez sudo) — **smazat ručně: `sudo rm -rf temp/cache.old temp/cache.old2`**.
 - **2026-07-30** — Administrace: CRUD akce/aktuality/galerie, vytvořen lokální admin uživatel, vše otestováno end-to-end přes HTTP (login, uložení, upload, mazání). Testovací data po ověření smazána.
 - **2026-07-30** — Stylování veřejné části, ověřeno v Chrome (úvod, akce, galerie, kontakt). V DB nechána ukázková data (5 akcí, 3 aktuality, 2 galerie s placeholder obrázky `www/data/upload/sample_*.png`) — před produkcí smazat. Úklid pro sudo: `sudo rm -rf temp/cache.old temp/cache.old2 temp/cache.old3 www/dist/css.old`.
+- **2026-09-22** — Sekce Nastavení v administraci + propojení na web (title, meta, hlavička, hero, patička), výchozí SVG logo. Otestováno přes HTTP: uložení textů, upload loga i hero fotky, propsání na web, mazání obrázků (deaktivace `File`), neplatný klíč → 404. Testovací hodnoty vráceny na původní. Migrace `Version20260922120000` (seed config) spuštěna přes CLI bootstrap ve scratchpadu. Úklid pro sudo: `sudo rm -rf temp/cache.old1 temp/cache.old2 www/dist/css.old-root`.
 - **2026-07-30** — Dokončena Fáze 4 (stránky + zprávy), GLightbox, hamburger menu. Vše otestováno (uložení stránky se propíše na web, zpráva z formuláře se uloží i při nefunkčním SMTP, lightbox se otevírá, collapse menu funguje). V přehledu zpráv nechány 1–2 testovací zprávy. Úklid pro sudo navíc: `sudo rm -rf temp/cache.old4 temp/cache.old5 www/dist/css.old-root www/dist/js.old`.

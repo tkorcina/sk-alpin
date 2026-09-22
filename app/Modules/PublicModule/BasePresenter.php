@@ -34,6 +34,12 @@ abstract class BasePresenter extends \App\Modules\BasePresenter
 		$this->getTemplate()->translator = $this->translator;
 		$this->template->locale = $this->translator->getLocale() ?? 'cs';
 		$this->template->validateCache = !$this->getHttpRequest()->getCookie('cacheDeleted');
+		$this->template->settings = $this->configService->getSiteSettings();
+
+		if ($this->page && !isset($this->template->pageTitle)) {
+			$this->template->pageTitle = $this->page->getTitle();
+		}
+
 		parent::beforeRender();
 	}
 

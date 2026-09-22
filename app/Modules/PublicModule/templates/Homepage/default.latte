@@ -1,9 +1,9 @@
 {block content}
 
-<section class="hero">
+<section n:class="hero, $settings->getHeroImage() ? hero-with-image" {if $settings->getHeroImage()}style="background-image: url('{$basePath}{$settings->getHeroImage()->getPath()}')"{/if}>
 	<div class="container">
 		<h1>{$page->getTitle()}</h1>
-		<p class="hero-motto">Orientační běh, pěší, vodní, lyžařská, letecká i motoristická turistika. Výlety a akce i pro veřejnost.</p>
+		<p class="hero-motto" n:if="$settings->getDescription()">{$settings->getDescription()}</p>
 		<a n:href="Event:default" class="btn btn-light mt-3">Podívejte se na naše akce</a>
 	</div>
 	<svg class="hero-mountains" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 L150 22 L280 55 L420 10 L560 48 L700 18 L840 52 L980 25 L1100 45 L1200 30 L1200 70 Z" fill="#ffffff"/></svg>

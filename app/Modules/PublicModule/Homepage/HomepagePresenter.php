@@ -31,6 +31,7 @@ class HomepagePresenter extends BasePresenter
 	public function renderDefault(): void
 	{
 		$this->template->page = $this->page;
+		$this->template->pageTitle = null; // na úvodu jen název webu
 
 		$this->template->upcomingEvents = $this->eventQueryFactory
 			->create()

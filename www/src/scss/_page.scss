@@ -34,8 +34,19 @@ main {
 		color: $forest-dark;
 		text-decoration: none;
 
-		svg {
+		svg,
+		.site-logo {
 			flex: 0 0 auto;
+		}
+
+		.site-logo {
+			height: 64px;
+			width: auto;
+			max-width: 220px;
+		}
+
+		.site-brand-text {
+			line-height: 1.15;
 		}
 	}
 
@@ -147,6 +158,29 @@ main {
 		font-size: 1.35rem;
 		max-width: 40rem;
 		color: rgba(#fff, .92);
+	}
+
+	// s nahranou fotkou z Nastavení: fotka na pozadí + tmavý přechod kvůli čitelnosti textu
+	&.hero-with-image {
+		background-size: cover;
+		background-position: center;
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(160deg, rgba($forest-dark, .82) 0%, rgba($forest, .6) 55%, rgba($lake, .45) 100%);
+		}
+
+		.container {
+			position: relative;
+			z-index: 1;
+		}
+
+		h1,
+		.hero-motto {
+			text-shadow: 0 1px 6px rgba(#000, .35);
+		}
 	}
 
 	.hero-mountains {

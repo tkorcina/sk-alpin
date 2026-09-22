@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="index, follow">
 	<meta name="author" content="Tomáš Korcina aka Korca">
+	<meta name="description" content="{$settings->getDescription()}">
+
+	<title>{ifset $pageTitle}{$pageTitle} | {/ifset}{$settings->getSiteTitle()}</title>
 
 
 	<link rel="preload" href="{$basePath}/dist/fonts/Urbanist-ExtraLight.woff2" as="font" type="font/woff2" crossorigin>
@@ -22,9 +25,13 @@
 		<div class="container py-3">
 			<div class="d-md-flex justify-content-between align-items-center">
 				<div class="d-flex justify-content-between align-items-center">
-					<a n:href="Homepage:default" class="site-brand">
-						<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M2 28 L12 8 L18 19 L22 12 L32 28 Z" fill="#2c5e3f"/><path d="M12 8 L15 14 L12 13 L9 14 Z" fill="#deefe6"/></svg>
-						<span>SK-Alpin<span class="site-brand-sub">sport a pohyb v přírodě</span></span>
+					<a n:href="Homepage:default" class="site-brand" title="{$settings->getSiteTitle()}">
+						{if $settings->getLogo()}
+							<img class="site-logo" src="{$basePath}{$settings->getLogo()->getPath()}" alt="{$settings->getSiteTitle()}">
+						{else}
+							{include 'include/logo.latte'}
+						{/if}
+						<span class="site-brand-text">{$settings->getSiteTitle()}<span class="site-brand-sub" n:if="$settings->getMotto()">{$settings->getMotto()}</span></span>
 					</a>
 					<button class="nav-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Otevřít menu">
 						<span class="nav-toggle-bar"></span>
@@ -76,9 +83,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<strong>SK-Alpin z.s.</strong><br>
-						Potocká 107/53, Kohoutovice, 623 00 Brno<br>
-						IČO: 22688391
+						<strong>{$settings->getCompanyName()}</strong><br>
+						{if $settings->getCompanyAddress()}{$settings->getCompanyAddress()}<br>{/if}
+						{if $settings->getCompanyIco()}IČO: {$settings->getCompanyIco()}{/if}
 					</div>
 					<div class="col-md-6 text-md-end mt-3 mt-md-0">
 						<a n:href="Contact:default">Kontakt</a><br>

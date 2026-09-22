@@ -43,6 +43,7 @@ class NewsPresenter extends BasePresenter
 
 	public function renderDefault(): void
 	{
+		$this->template->pageTitle = 'Aktuality';
 		$this->template->paginatorPage = $this->paginatorPage;
 		$this->template->newsList = $this->newsQueryFactory
 			->create()
@@ -62,6 +63,8 @@ class NewsPresenter extends BasePresenter
 		} catch (NoResultException) {
 			$this->error();
 		}
+
+		$this->template->pageTitle = $this->template->news->getTitle();
 	}
 
 	public function createComponentPaginator(IPaginatorControlFactory $factory): Paginator

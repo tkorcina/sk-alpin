@@ -15,6 +15,7 @@ class GalleryPresenter extends BasePresenter
 
 	public function renderDefault(): void
 	{
+		$this->template->pageTitle = 'Fotogalerie';
 		$this->template->galleries = $this->galleryQueryFactory
 			->create()
 			->byIsPublished()
@@ -32,6 +33,8 @@ class GalleryPresenter extends BasePresenter
 		} catch (NoResultException) {
 			$this->error();
 		}
+
+		$this->template->pageTitle = $this->template->gallery->getTitle();
 	}
 
 }

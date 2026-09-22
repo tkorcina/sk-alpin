@@ -19,6 +19,7 @@ class EventPresenter extends BasePresenter
 
 	public function renderDefault(): void
 	{
+		$this->template->pageTitle = 'Akce';
 		$this->template->upcomingEvents = $this->eventQueryFactory
 			->create()
 			->byIsPublished()
@@ -46,6 +47,7 @@ class EventPresenter extends BasePresenter
 		}
 
 		$this->template->event = $event;
+		$this->template->pageTitle = $event->getTitle();
 		$this->template->galleries = $this->galleryQueryFactory
 			->create()
 			->byIsPublished()

@@ -1,0 +1,37 @@
+{form form}
+	<h2 class="h5 mt-4">Web</h2>
+	{formPair siteTitle}
+	{formPair motto}
+	{formPair description}
+
+	<h2 class="h5 mt-4">Údaje spolku (patička)</h2>
+	{formPair companyName}
+	{formPair companyAddress}
+	{formPair companyIco}
+
+	<h2 class="h5 mt-4">Obrázky</h2>
+	<div>
+		{formPair logo}
+		<div class="d-flex justify-content-center flex-wrap mt-2 text-center" n:if="$settings->getLogo()">
+			<p class="my-0 p-3 bg-light"><img height="80" src="{$basePath}{$settings->getLogo()->getPath()}" alt="Logo"></p>
+			<div class="w-100">
+				<a href="{plink deleteFile!, key => 'logo'}" class="btn btn-outline-danger mt-2 border-radius-none" title="Smazat logo" onclick="return confirm('Opravdu smazat logo? Použije se výchozí logo webu.');">
+					Smazat logo
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="mt-3">
+		{formPair heroImage}
+		<div class="d-flex justify-content-center flex-wrap mt-2 text-center" n:if="$settings->getHeroImage()">
+			<p class="my-0"><img height="200" src="{$basePath}{$settings->getHeroImage()->getPath()}" alt="Úvodní obrázek"></p>
+			<div class="w-100">
+				<a href="{plink deleteFile!, key => 'heroImage'}" class="btn btn-outline-danger mt-2 border-radius-none" title="Smazat úvodní obrázek" onclick="return confirm('Opravdu smazat úvodní obrázek?');">
+					Smazat úvodní obrázek
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="mt-4">{formPair submit}</div>
+{/form}
