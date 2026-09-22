@@ -29,15 +29,16 @@ class SettingsForm extends BaseForm
 
 
 		$form->addText(ConfigKey::SITE_TITLE, 'Název webu*')
-			->setOption('description', 'Zobrazuje se v hlavičce a v titulku okna prohlížeče.')
+			->setOption('description', 'Zobrazuje se v titulku okna prohlížeče (např. „Akce | SK-Alpin“).')
 			->setRequired('Vyplňte název webu');
 
-		$form->addText(ConfigKey::MOTTO, 'Motto')
-			->setOption('description', 'Krátký slogan pod názvem v hlavičce, např. „sport a pohyb v přírodě“.');
+		$form->addTextArea(ConfigKey::MOTTO, 'Motto')
+			->setHtmlAttribute('rows', 2)
+			->setOption('description', 'Text v úvodním bloku hlavní stránky nad tlačítkem „Podívejte se na naše akce“.');
 
-		$form->addTextArea(ConfigKey::DESCRIPTION, 'Popisek')
-			->setHtmlAttribute('rows', 4)
-			->setOption('description', 'Krátký text o spolku — zobrazuje se v úvodním bloku na hlavní stránce a jako popis webu pro vyhledávače.');
+		$form->addTextArea(ConfigKey::DESCRIPTION, 'Popisek webu')
+			->setHtmlAttribute('rows', 3)
+			->setOption('description', 'Krátký popis spolku pro vyhledávače a sdílení odkazu (meta description). Na webu se nezobrazuje.');
 
 		$form->addGroup('Údaje spolku (patička)');
 
@@ -50,7 +51,7 @@ class SettingsForm extends BaseForm
 
 
 		$form->addUpload(ConfigKey::LOGO, 'Logo')
-			->setOption('description', 'Když není nahrané, použije se výchozí logo webu. Ideálně PNG/SVG s průhledným pozadím, výška cca 60 px.')
+			->setOption('description', 'Když není nahrané, použije se výchozí logo webu. Ideálně PNG/SVG s průhledným pozadím, výška cca 50 px.')
 			->addRule(\Nette\Forms\Form::MimeType, 'Lze nahrát pouze soubory typu: ' . implode(', ', static::$imageExtensions) . ', .svg', [...static::$imageMimeTypes, 'image/svg+xml'])
 			->addRule(\Nette\Forms\Form::MaxFileSize, 'Maximální velikost nahrávaného souboru je 10 MB.', 10 * 1024 * 1024);
 

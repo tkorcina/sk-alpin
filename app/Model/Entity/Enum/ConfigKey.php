@@ -10,13 +10,13 @@ namespace App\Model\Entity\Enum;
 class ConfigKey
 {
 
-	/** Název webu (title v prohlížeči, název v hlavičce) */
+	/** Název webu (title v prohlížeči) */
 	const SITE_TITLE = 'siteTitle';
 
-	/** Krátké motto / slogan (pod názvem v hlavičce) */
+	/** Motto — text v hero bloku na úvodní stránce */
 	const MOTTO = 'motto';
 
-	/** Popisek spolku (hero na úvodu, meta description) */
+	/** Popisek webu (meta description) */
 	const DESCRIPTION = 'description';
 
 	/** Oficiální název spolku (patička) */
