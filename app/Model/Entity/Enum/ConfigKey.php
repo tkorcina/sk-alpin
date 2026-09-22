@@ -16,7 +16,7 @@ class ConfigKey
 	/** Motto — text v hero bloku na úvodní stránce */
 	const MOTTO = 'motto';
 
-	/** Popisek webu (meta description) */
+	/** Popisek webu — úvodní odstavec na homepage + meta description */
 	const DESCRIPTION = 'description';
 
 	/** Oficiální název spolku (patička) */

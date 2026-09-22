@@ -38,7 +38,7 @@ class SettingsForm extends BaseForm
 
 		$form->addTextArea(ConfigKey::DESCRIPTION, 'Popisek webu')
 			->setHtmlAttribute('rows', 3)
-			->setOption('description', 'Krátký popis spolku pro vyhledávače a sdílení odkazu (meta description). Na webu se nezobrazuje.');
+			->setOption('description', 'Krátký text o spolku — zobrazuje se na hlavní stránce pod úvodním blokem a zároveň jako popis webu pro vyhledávače.');
 
 		$form->addGroup('Údaje spolku (patička)');
 

@@ -9,9 +9,10 @@
 	<svg class="hero-mountains" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 L150 22 L280 55 L420 10 L560 48 L700 18 L840 52 L980 25 L1100 45 L1200 30 L1200 70 Z" fill="#ffffff"/></svg>
 </section>
 
-<section class="section">
+<section class="section" n:if="$settings->getDescription() || trim(strip_tags($page->getContent()))">
 	<div class="container">
-		<div class="page-content">{$page->getContent()|noescape}</div>
+		<p class="lead-text" n:if="$settings->getDescription()">{$settings->getDescription()}</p>
+		<div class="page-content" n:if="trim(strip_tags($page->getContent()))">{$page->getContent()|noescape}</div>
 	</div>
 </section>
 
